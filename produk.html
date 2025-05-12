@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katalog Produk - AndyShop</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header/Navbar -->
+    <header class="navbar">
+        <div class="container">
+            <div class="navbar-content">
+                <div class="logo">
+                    <a href="index.html">AndyShop</a>
+                </div>
+                <div class="search-bar">
+                    <input type="text" placeholder="Cari produk...">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </div>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="artikel.html">Artikel</a></li>
+                        <li><a href="produk.html" class="active">Produk</a></li>
+                        <li>
+                            <a href="keranjang.html" class="cart-icon">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span class="cart-count">0</span>
+                            </a>
+                        </li>
+                        <li><a href="dashboard.html" class="user-icon"><i class="fas fa-user"></i></a></li>
+                    </ul>
+                </nav>
+                <div class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <div class="mobile-search">
+            <input type="text" placeholder="Cari produk...">
+            <button type="submit"><i class="fas fa-search"></i></button>
+        </div>
+        <ul>
+            <li><a href="artikel.html">Artikel</a></li>
+            <li><a href="produk.html" class="active">Produk</a></li>
+            <li><a href="keranjang.html">Keranjang</a></li>
+            <li><a href="dashboard.html">Akun Saya</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <h1 class="page-title">Katalog Produk</h1>
+
+            <!-- Search and Filter -->
+            <div class="search-filter">
+                <div class="search-container">
+                    <input type="text" id="produk-search" placeholder="Cari produk...">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="sort-filter">
+                    <select id="sort-select">
+                        <option value="terbaru">Terbaru</option>
+                        <option value="termurah">Harga: Termurah</option>
+                        <option value="termahal">Harga: Termahal</option>
+                        <option value="rating">Rating Tertinggi</option>
+                    </select>
+                    <button class="filter-btn"><i class="fas fa-filter"></i> Filter</button>
+                </div>
+            </div>
+
+            <!-- Categories -->
+            <div class="categories">
+                <button class="category-btn active" data-category="all">Semua</button>
+                <button class="category-btn" data-category="elektronik">Elektronik</button>
+                <button class="category-btn" data-category="buku">Buku</button>
+                <button class="category-btn" data-category="alat-tulis">Alat Tulis</button>
+                <button class="category-btn" data-category="kebutuhan-sehari-hari">Kebutuhan Sehari-hari</button>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="products-grid" id="products-container">
+                <!-- Products will be loaded dynamically via JavaScript -->
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <button class="pagination-btn disabled">Sebelumnya</button>
+                <button class="pagination-btn active">1</button>
+                <button class="pagination-btn">2</button>
+                <button class="pagination-btn">3</button>
+                <button class="pagination-btn">Selanjutnya</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>AndyShop</h3>
+                    <p>Belanja cepat dan mudah, sesuai dengan gaya hidup mahasiswa.</p>
+                    <p class="quote">"Kalau ada yang Cepet, Ngapain Ribet"</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Tautan</h3>
+                    <ul>
+                        <li><a href="index.html">Beranda</a></li>
+                        <li><a href="artikel.html">Artikel</a></li>
+                        <li><a href="produk.html">Produk</a></li>
+                        <li><a href="keranjang.html">Keranjang</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Kontak</h3>
+                    <p>Kos, Surabaya Timur</p>
+                    <p>info@andyshop.com</p>
+                    <p>+62 812 3456 7890</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year"></span> AndyShop. Hak Cipta Dilindungi.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/produk.js"></script>
+</body>
+</html>

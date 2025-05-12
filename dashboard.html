@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - AndyShop</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="admin-page">
+    <!-- Header/Navbar -->
+    <header class="navbar">
+        <div class="container">
+            <div class="navbar-content">
+                <div class="logo">
+                    <a href="index.html">AndyShop</a>
+                </div>
+                <div class="search-bar">
+                    <input type="text" placeholder="Cari produk...">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </div>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="artikel.html">Artikel</a></li>
+                        <li><a href="produk.html">Produk</a></li>
+                        <li>
+                            <a href="keranjang.html" class="cart-icon">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span class="cart-count">0</span>
+                            </a>
+                        </li>
+                        <li><a href="dashboard.html" class="user-icon active"><i class="fas fa-user"></i></a></li>
+                    </ul>
+                </nav>
+                <div class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <div class="mobile-search">
+            <input type="text" placeholder="Cari produk...">
+            <button type="submit"><i class="fas fa-search"></i></button>
+        </div>
+        <ul>
+            <li><a href="artikel.html">Artikel</a></li>
+            <li><a href="produk.html">Produk</a></li>
+            <li><a href="keranjang.html">Keranjang</a></li>
+            <li><a href="dashboard.html" class="active">Akun Saya</a></li>
+        </ul>
+    </div>
+
+    <!-- Admin Sidebar -->
+    <div class="admin-container">
+        <aside class="admin-sidebar">
+            <nav class="admin-nav">
+                <ul>
+                    <li><a href="dashboard.html" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                    <li><a href="kelola-artikel.html"><i class="fas fa-newspaper"></i> Kelola Artikel</a></li>
+                    <li><a href="kelola-produk.html"><i class="fas fa-box"></i> Kelola Produk</a></li>
+                    <li><a href="kelola-pengguna.html"><i class="fas fa-users"></i> Kelola Pengguna</a></li>
+                    <li><a href="kelola-transaksi.html"><i class="fas fa-money-bill-wave"></i> Kelola Transaksi</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-content">
+            <h1>Dashboard</h1>
+
+            <!-- Overview Cards -->
+            <div class="overview-cards">
+                <div class="overview-card">
+                    <div class="card-content">
+                        <div>
+                            <p class="card-label">Total Pendapatan</p>
+                            <h3 class="card-value">Rp 12.500.000</h3>
+                            <p class="card-trend positive">
+                                <i class="fas fa-arrow-up"></i> +15% dari bulan lalu
+                            </p>
+                        </div>
+                        <div class="card-icon">
+                            <i class="fas fa-credit-card"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="overview-card">
+                    <div class="card-content">
+                        <div>
+                            <p class="card-label">Total Pesanan</p>
+                            <h3 class="card-value">156</h3>
+                            <p class="card-trend positive">
+                                <i class="fas fa-arrow-up"></i> +8% dari bulan lalu
+                            </p>
+                        </div>
+                        <div class="card-icon">
+                            <i class="fas fa-shopping-bag"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="overview-card">
+                    <div class="card-content">
+                        <div>
+                            <p class="card-label">Total Produk</p>
+                            <h3 class="card-value">32</h3>
+                            <p class="card-trend positive">
+                                <i class="fas fa-arrow-up"></i> +3 produk baru
+                            </p>
+                        </div>
+                        <div class="card-icon">
+                            <i class="fas fa-box"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="overview-card">
+                    <div class="card-content">
+                        <div>
+                            <p class="card-label">Total Pengguna</p>
+                            <h3 class="card-value">42</h3>
+                            <p class="card-trend positive">
+                                <i class="fas fa-arrow-up"></i> +5 pengguna baru
+                            </p>
+                        </div>
+                        <div class="card-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts -->
+            <div class="dashboard-charts">
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h3>Pendapatan Bulanan</h3>
+                    </div>
+                    <div class="chart-body">
+                        <canvas id="revenue-chart"></canvas>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h3>Status Pesanan</h3>
+                    </div>
+                    <div class="chart-body">
+                        <canvas id="order-status-chart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Orders and Low Stock -->
+            <div class="dashboard-widgets">
+                <div class="widget">
+                    <div class="widget-header">
+                        <h3>Pesanan Terbaru</h3>
+                        <a href="kelola-transaksi.html" class="view-all">Lihat Semua <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="widget-content">
+                        <div class="recent-orders">
+                            <div class="order-item">
+                                <div class="order-info">
+                                    <div class="order-id">INV-20250506</div>
+                                    <div class="order-customer">Pengguna 1</div>
+                                </div>
+                                <div class="order-details">
+                                    <div class="order-amount">Rp 389.000</div>
+                                    <div class="order-status completed">Selesai</div>
+                                </div>
+                            </div>
+                            <div class="order-item">
+                                <div class="order-info">
+                                    <div class="order-id">INV-20250505</div>
+                                    <div class="order-customer">Pengguna 2</div>
+                                </div>
+                                <div class="order-details">
+                                    <div class="order-amount">Rp 150.000</div>
+                                    <div class="order-status shipped">Dikirim</div>
+                                </div>
+                            </div>
+                            <div class="order-item">
+                                <div class="order-info">
+                                    <div class="order-id">INV-20250504</div>
+                                    <div class="order-customer">Pengguna 3</div>
+                                </div>
+                                <div class="order-details">
+                                    <div class="order-amount">Rp 275.000</div>
+                                    <div class="order-status processing">Diproses</div>
+                                </div>
+                            </div>
+                            <div class="order-item">
+                                <div class="order-info">
+                                    <div class="order-id">INV-20250503</div>
+                                    <div class="order-customer">Pengguna 4</div>
+                                </div>
+                                <div class="order-details">
+                                    <div class="order-amount">Rp 85.000</div>
+                                    <div class="order-status cancelled">Dibatalkan</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget">
+                    <div class="widget-header">
+                        <h3>Stok Menipis</h3>
+                        <a href="kelola-produk.html" class="view-all">Kelola Produk <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="widget-content">
+                        <div class="low-stock-products">
+                            <div class="product-item">
+                                <div class="product-image">
+                                    <img src="img/product-1.jpg" alt="Headphone Bluetooth">
+                                </div>
+                                <div class="product-info">
+                                    <div class="product-name">Headphone Bluetooth</div>
+                                    <div class="product-category">Elektronik</div>
+                                </div>
+                                <div class="product-stock">
+                                    <div class="stock-count low">Stok: 3</div>
+                                    <button class="btn btn-sm btn-outline">Tambah Stok</button>
+                                </div>
+                            </div>
+                            <div class="product-item">
+                                <div class="product-image">
+                                    <img src="img/product-3.jpg" alt="USB Flash Drive 32GB">
+                                </div>
+                                <div class="product-info">
+                                    <div class="product-name">USB Flash Drive 32GB</div>
+                                    <div class="product-category">Elektronik</div>
+                                </div>
+                                <div class="product-stock">
+                                    <div class="stock-count low">Stok: 5</div>
+                                    <button class="btn btn-sm btn-outline">Tambah Stok</button>
+                                </div>
+                            </div>
+                            <div class="product-item">
+                                <div class="product-image">
+                                    <img src="img/product-2.jpg" alt="Notebook Premium A5">
+                                </div>
+                                <div class="product-info">
+                                    <div class="product-name">Notebook Premium A5</div>
+                                    <div class="product-category">Alat Tulis</div>
+                                </div>
+                                <div class="product-stock">
+                                    <div class="stock-count low">Stok: 7</div>
+                                    <button class="btn btn-sm btn-outline">Tambah Stok</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Categories -->
+            <div class="chart-container full-width">
+                <div class="chart-header">
+                    <h3>Kategori Produk</h3>
+                    <div class="chart-tabs">
+                        <button class="tab-btn active" data-tab="chart">Grafik</button>
+                        <button class="tab-btn" data-tab="table">Tabel</button>
+                    </div>
+                </div>
+                <div class="chart-body">
+                    <div class="tab-panel active" id="chart-panel">
+                        <canvas id="category-chart"></canvas>
+                    </div>
+                    <div class="tab-panel" id="table-panel">
+                        <table class="category-table">
+                            <thead>
+                                <tr>
+                                    <th>Kategori</th>
+                                    <th>Jumlah Produk</th>
+                                    <th>Persentase</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Elektronik</td>
+                                    <td>14</td>
+                                    <td>35%</td>
+                                </tr>
+                                <tr>
+                                    <td>Buku</td>
+                                    <td>10</td>
+                                    <td>25%</td>
+                                </tr>
+                                <tr>
+                                    <td>Alat Tulis</td>
+                                    <td>8</td>
+                                    <td>20%</td>
+                                </tr>
+                                <tr>
+                                    <td>Kebutuhan Sehari-hari</td>
+                                    <td>6</td>
+                                    <td>15%</td>
+                                </tr>
+                                <tr>
+                                    <td>Lainnya</td>
+                                    <td>2</td>
+                                    <td>5%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

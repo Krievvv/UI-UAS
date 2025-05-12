@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelola Pengguna - AndyShop</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="admin-page">
+    <!-- Header/Navbar -->
+    <header class="navbar">
+        <div class="container">
+            <div class="navbar-content">
+                <div class="logo">
+                    <a href="index.html">AndyShop</a>
+                </div>
+                <div class="search-bar">
+                    <input type="text" placeholder="Cari produk...">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </div>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="artikel.html">Artikel</a></li>
+                        <li><a href="produk.html">Produk</a></li>
+                        <li>
+                            <a href="keranjang.html" class="cart-icon">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span class="cart-count">0</span>
+                            </a>
+                        </li>
+                        <li><a href="dashboard.html" class="user-icon active"><i class="fas fa-user"></i></a></li>
+                    </ul>
+                </nav>
+                <div class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <div class="mobile-search">
+            <input type="text" placeholder="Cari produk...">
+            <button type="submit"><i class="fas fa-search"></i></button>
+        </div>
+        <ul>
+            <li><a href="artikel.html">Artikel</a></li>
+            <li><a href="produk.html">Produk</a></li>
+            <li><a href="keranjang.html">Keranjang</a></li>
+            <li><a href="dashboard.html" class="active">Akun Saya</a></li>
+        </ul>
+    </div>
+
+    <!-- Admin Sidebar -->
+    <div class="admin-container">
+        <aside class="admin-sidebar">
+            <nav class="admin-nav">
+                <ul>
+                    <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                    <li><a href="kelola-artikel.html"><i class="fas fa-newspaper"></i> Kelola Artikel</a></li>
+                    <li><a href="kelola-produk.html"><i class="fas fa-box"></i> Kelola Produk</a></li>
+                    <li><a href="kelola-pengguna.html" class="active"><i class="fas fa-users"></i> Kelola Pengguna</a></li>
+                    <li><a href="kelola-transaksi.html"><i class="fas fa-money-bill-wave"></i> Kelola Transaksi</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-content">
+            <div class="admin-header">
+                <h1>Kelola Pengguna</h1>
+                <button id="add-user-btn" class="btn btn-primary">
+                    <i class="fas fa-user-plus"></i> Tambah Pengguna
+                </button>
+            </div>
+
+            <!-- Search and Filter -->
+            <div class="search-filter">
+                <div class="search-container">
+                    <input type="text" id="admin-user-search" placeholder="Cari pengguna...">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="filter-buttons">
+                    <button class="filter-btn"><i class="fas fa-filter"></i> Filter</button>
+                    <button class="filter-btn"><i class="fas fa-sort"></i> Urutkan</button>
+                </div>
+            </div>
+
+            <!-- Users Table -->
+            <div class="table-container">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Pengguna</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Status</th>
+                            <th>Tanggal Bergabung</th>
+                            <th>Pesanan</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="users-table-body">
+                        <!-- Users will be loaded dynamically via JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <div class="pagination-info">Menampilkan 1-10 dari 42 pengguna</div>
+                <div class="pagination-buttons">
+                    <button class="pagination-btn disabled">Sebelumnya</button>
+                    <button class="pagination-btn active">1</button>
+                    <button class="pagination-btn">2</button>
+                    <button class="pagination-btn">3</button>
+                    <button class="pagination-btn">4</button>
+                    <button class="pagination-btn">5</button>
+                    <button class="pagination-btn">Selanjutnya</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Add/Edit User Modal -->
+    <div id="user-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Tambah Pengguna Baru</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="user-form">
+                    <div class="form-group">
+                        <label for="user-name">Nama Lengkap</label>
+                        <input type="text" id="user-name" name="name" placeholder="Masukkan nama lengkap">
+                    </div>
+                    <div class="form-group">
+                        <label for="user-email">Email</label>
+                        <input type="email" id="user-email" name="email" placeholder="email@example.com">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="user-password">Password</label>
+                            <input type="password" id="user-password" name="password" placeholder="••••••••">
+                        </div>
+                        <div class="form-group">
+                            <label for="user-confirm">Konfirmasi Password</label>
+                            <input type="password" id="user-confirm" name="confirm" placeholder="••••••••">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="user-role">Role</label>
+                        <select id="user-role" name="role">
+                            <option value="customer">Customer</option>
+                            <option value="admin">Admin</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="cancel-user-btn">Batal</button>
+                <button class="btn btn-primary" id="save-user-btn">Tambah Pengguna</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/kelola-pengguna.js"></script>
+</body>
+</html>

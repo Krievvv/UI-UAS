@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelola Transaksi - AndyShop</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="admin-page">
+    <!-- Header/Navbar -->
+    <header class="navbar">
+        <div class="container">
+            <div class="navbar-content">
+                <div class="logo">
+                    <a href="index.html">AndyShop</a>
+                </div>
+                <div class="search-bar">
+                    <input type="text" placeholder="Cari produk...">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </div>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="artikel.html">Artikel</a></li>
+                        <li><a href="produk.html">Produk</a></li>
+                        <li>
+                            <a href="keranjang.html" class="cart-icon">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span class="cart-count">0</span>
+                            </a>
+                        </li>
+                        <li><a href="dashboard.html" class="user-icon active"><i class="fas fa-user"></i></a></li>
+                    </ul>
+                </nav>
+                <div class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <div class="mobile-search">
+            <input type="text" placeholder="Cari produk...">
+            <button type="submit"><i class="fas fa-search"></i></button>
+        </div>
+        <ul>
+            <li><a href="artikel.html">Artikel</a></li>
+            <li><a href="produk.html">Produk</a></li>
+            <li><a href="keranjang.html">Keranjang</a></li>
+            <li><a href="dashboard.html" class="active">Akun Saya</a></li>
+        </ul>
+    </div>
+
+    <!-- Admin Sidebar -->
+    <div class="admin-container">
+        <aside class="admin-sidebar">
+            <nav class="admin-nav">
+                <ul>
+                    <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                    <li><a href="kelola-artikel.html"><i class="fas fa-newspaper"></i> Kelola Artikel</a></li>
+                    <li><a href="kelola-produk.html"><i class="fas fa-box"></i> Kelola Produk</a></li>
+                    <li><a href="kelola-pengguna.html"><i class="fas fa-users"></i> Kelola Pengguna</a></li>
+                    <li><a href="kelola-transaksi.html" class="active"><i class="fas fa-money-bill-wave"></i> Kelola Transaksi</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-content">
+            <div class="admin-header">
+                <h1>Kelola Transaksi</h1>
+            </div>
+
+            <!-- Search and Filter -->
+            <div class="search-filter">
+                <div class="search-container">
+                    <input type="text" id="admin-transaction-search" placeholder="Cari transaksi...">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="filter-buttons">
+                    <button class="filter-btn"><i class="fas fa-filter"></i> Filter</button>
+                    <button class="filter-btn"><i class="fas fa-sort"></i> Urutkan</button>
+                </div>
+            </div>
+
+            <!-- Transactions Table -->
+            <div class="table-container">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>ID Transaksi</th>
+                            <th>Pelanggan</th>
+                            <th>Tanggal</th>
+                            <th>Metode Pembayaran</th>
+                            <th>Item</th>
+                            <th>Total</th>
+                            <th>Status</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="transactions-table-body">
+                        <!-- Transactions will be loaded dynamically via JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <div class="pagination-info">Menampilkan 1-10 dari 56 transaksi</div>
+                <div class="pagination-buttons">
+                    <button class="pagination-btn disabled">Sebelumnya</button>
+                    <button class="pagination-btn active">1</button>
+                    <button class="pagination-btn">2</button>
+                    <button class="pagination-btn">3</button>
+                    <button class="pagination-btn">4</button>
+                    <button class="pagination-btn">5</button>
+                    <button class="pagination-btn">Selanjutnya</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Transaction Detail Modal -->
+    <div id="transaction-modal" class="modal">
+        <div class="modal-content modal-lg">
+            <div class="modal-header">
+                <h2>Detail Transaksi #INV-20250501</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="transaction-detail">
+                    <div class="detail-row">
+                        <div class="detail-section">
+                            <h3>Informasi Pelanggan</h3>
+                            <div class="detail-info">
+                                <p><span>Nama:</span> Pengguna 1</p>
+                                <p><span>Email:</span> user1@example.com</p>
+                                <p><span>Telepon:</span> 081234567890</p>
+                            </div>
+                        </div>
+                        <div class="detail-section">
+                            <h3>Informasi Pengiriman</h3>
+                            <div class="detail-info">
+                                <p><span>Alamat:</span> Jl. Kos Indah No. 123</p>
+                                <p><span>Kota:</span> Surabaya Timur</p>
+                                <p><span>Kode Pos:</span> 60115</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="detail-section">
+                        <h3>Item Pesanan</h3>
+                        <table class="detail-table">
+                            <thead>
+                                <tr>
+                                    <th>Produk</th>
+                                    <th>Harga</th>
+                                    <th>Jumlah</th>
+                                    <th>Subtotal</th>
+                                </tr>
+                            </thead>
+                            <tbody id="order-items">
+                                <tr>
+                                    <td>Headphone Bluetooth</td>
+                                    <td>Rp 299.000</td>
+                                    <td>1</td>
+                                    <td>Rp 299.000</td>
+                                </tr>
+                                <tr>
+                                    <td>Notebook Premium A5</td>
+                                    <td>Rp 45.000</td>
+                                    <td>2</td>
+                                    <td>Rp 90.000</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="detail-row">
+                        <div class="detail-section">
+                            <h3>Informasi Pembayaran</h3>
+                            <div class="detail-info">
+                                <p><span>Metode:</span> Transfer Bank</p>
+                                <p><span>Status:</span> <span class="status-paid">Lunas</span></p>
+                                <p><span>Tanggal:</span> 1 Mei 2025</p>
+                            </div>
+                        </div>
+                        <div class="detail-section">
+                            <h3>Ringkasan Biaya</h3>
+                            <div class="detail-info summary">
+                                <div class="summary-row">
+                                    <span>Subtotal:</span>
+                                    <span>Rp 389.000</span>
+                                </div>
+                                <div class="summary-row">
+                                    <span>Pengiriman:</span>
+                                    <span>Rp 15.000</span>
+                                </div>
+                                <div class="summary-row total">
+                                    <span>Total:</span>
+                                    <span>Rp 404.000</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="close-detail-btn">Tutup</button>
+                <button class="btn btn-primary" id="print-invoice-btn">Cetak Invoice</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/kelola-transaksi.js"></script>
+</body>
+</html>

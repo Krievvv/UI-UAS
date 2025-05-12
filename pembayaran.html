@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pembayaran - AndyShop</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header/Navbar -->
+    <header class="navbar">
+        <div class="container">
+            <div class="navbar-content">
+                <div class="logo">
+                    <a href="index.html">AndyShop</a>
+                </div>
+                <div class="search-bar">
+                    <input type="text" placeholder="Cari produk...">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </div>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="artikel.html">Artikel</a></li>
+                        <li><a href="produk.html">Produk</a></li>
+                        <li>
+                            <a href="keranjang.html" class="cart-icon">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span class="cart-count">0</span>
+                            </a>
+                        </li>
+                        <li><a href="dashboard.html" class="user-icon"><i class="fas fa-user"></i></a></li>
+                    </ul>
+                </nav>
+                <div class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <div class="mobile-search">
+            <input type="text" placeholder="Cari produk...">
+            <button type="submit"><i class="fas fa-search"></i></button>
+        </div>
+        <ul>
+            <li><a href="artikel.html">Artikel</a></li>
+            <li><a href="produk.html">Produk</a></li>
+            <li><a href="keranjang.html">Keranjang</a></li>
+            <li><a href="dashboard.html">Akun Saya</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <div class="back-link">
+                <a href="keranjang.html"><i class="fas fa-arrow-left"></i> Kembali ke Keranjang</a>
+            </div>
+
+            <h1 class="page-title">Pembayaran</h1>
+
+            <div class="checkout-container">
+                <!-- Shipping and Payment Form -->
+                <div class="checkout-form">
+                    <!-- Shipping Information -->
+                    <div class="checkout-section">
+                        <h3>Informasi Pengiriman</h3>
+                        <form id="shipping-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="name">Nama Lengkap</label>
+                                    <input type="text" id="name" name="name" placeholder="Masukkan nama lengkap" value="Andy">
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Nomor Telepon</label>
+                                    <input type="text" id="phone" name="phone" placeholder="Masukkan nomor telepon" value="081234567890">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" placeholder="Masukkan email" value="andy@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="address">Alamat Lengkap</label>
+                                <textarea id="address" name="address" placeholder="Masukkan alamat lengkap">Jl. Kos Indah No. 123, Surabaya Timur</textarea>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="city">Kota</label>
+                                    <input type="text" id="city" name="city" placeholder="Kota" value="Surabaya">
+                                </div>
+                                <div class="form-group">
+                                    <label for="province">Provinsi</label>
+                                    <input type="text" id="province" name="province" placeholder="Provinsi" value="Jawa Timur">
+                                </div>
+                                <div class="form-group">
+                                    <label for="postal">Kode Pos</label>
+                                    <input type="text" id="postal" name="postal" placeholder="Kode Pos" value="60115">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Payment Method -->
+                    <div class="checkout-section">
+                        <h3>Metode Pembayaran</h3>
+                        <div class="payment-methods">
+                            <div class="payment-method active">
+                                <input type="radio" id="bank" name="payment" value="bank" checked>
+                                <label for="bank">
+                                    <i class="fas fa-university"></i>
+                                    <div>
+                                        <div class="method-name">Transfer Bank</div>
+                                        <div class="method-desc">BCA, BNI, Mandiri, BRI</div>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="payment-method">
+                                <input type="radio" id="ewallet" name="payment" value="ewallet">
+                                <label for="ewallet">
+                                    <i class="fas fa-wallet"></i>
+                                    <div>
+                                        <div class="method-name">E-Wallet</div>
+                                        <div class="method-desc">GoPay, OVO, DANA, LinkAja</div>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="payment-method">
+                                <input type="radio" id="qris" name="payment" value="qris">
+                                <label for="qris">
+                                    <i class="fas fa-qrcode"></i>
+                                    <div>
+                                        <div class="method-name">QRIS</div>
+                                        <div class="method-desc">Scan untuk pembayaran instan</div>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="notes">Catatan Pesanan (Opsional)</label>
+                            <textarea id="notes" name="notes" placeholder="Tambahkan catatan untuk pesanan Anda"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Order Summary -->
+                <div class="order-summary">
+                    <h3>Ringkasan Pesanan</h3>
+                    <div id="checkout-items">
+                        <!-- Checkout items will be loaded dynamically via JavaScript -->
+                    </div>
+                    <div class="summary-totals">
+                        <div class="summary-row">
+                            <span>Subtotal</span>
+                            <span id="subtotal">Rp 0</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Pengiriman</span>
+                            <span id="shipping">Rp 15.000</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span>Total</span>
+                            <span id="total">Rp 0</span>
+                        </div>
+                    </div>
+                    <button id="pay-button" class="btn btn-primary btn-block">Bayar Sekarang</button>
+                    <p class="terms">Dengan melakukan pembayaran, Anda menyetujui Syarat dan Ketentuan serta Kebijakan Privasi kami.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>AndyShop</h3>
+                    <p>Belanja cepat dan mudah, sesuai dengan gaya hidup mahasiswa.</p>
+                    <p class="quote">"Kalau ada yang Cepet, Ngapain Ribet"</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Tautan</h3>
+                    <ul>
+                        <li><a href="index.html">Beranda</a></li>
+                        <li><a href="artikel.html">Artikel</a></li>
+                        <li><a href="produk.html">Produk</a></li>
+                        <li><a href="keranjang.html">Keranjang</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Kontak</h3>
+                    <p>Kos, Surabaya Timur</p>
+                    <p>info@andyshop.com</p>
+                    <p>+62 812 3456 7890</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year"></span> AndyShop. Hak Cipta Dilindungi.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/pembayaran.js"></script>
+</body>
+</html>
