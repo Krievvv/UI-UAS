@@ -1,10 +1,10 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Get article ID from URL
     const articleId = getUrlParam('id') || 1;
-    
+
     // Load article content
     loadArticleContent(articleId);
-    
+
     // Load related articles
     loadRelatedArticles(articleId);
 });
@@ -12,9 +12,9 @@ document.addEventListener('DOMContentLoaded', function() {
 // Load article content
 function loadArticleContent(articleId) {
     const articleContent = document.getElementById('article-content');
-    
+
     if (!articleContent) return;
-    
+
     // Sample article data
     const articles = [
         {
@@ -74,10 +74,10 @@ function loadArticleContent(articleId) {
             `
         }
     ];
-    
+
     // Find article by ID
     const article = articles.find(article => article.id === parseInt(articleId)) || articles[0];
-    
+
     // Generate article HTML
     const articleHTML = `
         <h1 class="article-title">${article.title}</h1>
@@ -111,9 +111,9 @@ function loadArticleContent(articleId) {
             ${article.content}
         </div>
     `;
-    
+
     articleContent.innerHTML = articleHTML;
-    
+
     // Update page title
     document.title = `${article.title} - AndyShop`;
 }
@@ -121,9 +121,9 @@ function loadArticleContent(articleId) {
 // Load related articles
 function loadRelatedArticles(currentArticleId) {
     const relatedArticlesContainer = document.getElementById('related-articles');
-    
+
     if (!relatedArticlesContainer) return;
-    
+
     // Sample related articles data
     const relatedArticles = [
         {
@@ -148,10 +148,10 @@ function loadRelatedArticles(currentArticleId) {
             image: 'img/article-4.jpg'
         }
     ].filter(article => article.id !== parseInt(currentArticleId));
-    
+
     // Generate HTML for related articles
     let articlesHTML = '';
-    
+
     relatedArticles.forEach(article => {
         articlesHTML += `
             <div class="article-card">
@@ -167,6 +167,6 @@ function loadRelatedArticles(currentArticleId) {
             </div>
         `;
     });
-    
+
     relatedArticlesContainer.innerHTML = articlesHTML;
 }

@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Load transactions
     loadTransactions();
 });
@@ -6,9 +6,9 @@ document.addEventListener('DOMContentLoaded', function() {
 // Load transactions
 function loadTransactions() {
     const transactionsContainer = document.getElementById('transactions-container');
-    
+
     if (!transactionsContainer) return;
-    
+
     // Sample transactions data
     const transactions = [
         {
@@ -47,10 +47,10 @@ function loadTransactions() {
             status: 'dibayar'
         }
     ];
-    
+
     // Generate transactions HTML
     let transactionsHTML = '';
-    
+
     transactions.forEach(transaction => {
         transactionsHTML += `
             <div class="transaction-card">
@@ -84,7 +84,7 @@ function loadTransactions() {
             </div>
         `;
     });
-    
+
     transactionsContainer.innerHTML = transactionsHTML;
 }
 

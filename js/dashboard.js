@@ -1,10 +1,10 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Initialize revenue chart
     initializeRevenueChart();
-    
+
     // Initialize order status chart
     initializeOrderStatusChart();
-    
+
     // Initialize category chart
     initializeCategoryChart();
 });
@@ -12,9 +12,9 @@ document.addEventListener('DOMContentLoaded', function() {
 // Initialize revenue chart
 function initializeRevenueChart() {
     const revenueChartCanvas = document.getElementById('revenue-chart');
-    
+
     if (!revenueChartCanvas) return;
-    
+
     const revenueChart = new Chart(revenueChartCanvas, {
         type: 'line',
         data: {
@@ -40,9 +40,9 @@ function initializeRevenueChart() {
 // Initialize order status chart
 function initializeOrderStatusChart() {
     const orderStatusChartCanvas = document.getElementById('order-status-chart');
-    
+
     if (!orderStatusChartCanvas) return;
-    
+
     const orderStatusChart = new Chart(orderStatusChartCanvas, {
         type: 'pie',
         data: {
@@ -69,9 +69,9 @@ function initializeOrderStatusChart() {
 // Initialize category chart
 function initializeCategoryChart() {
     const categoryChartCanvas = document.getElementById('category-chart');
-    
+
     if (!categoryChartCanvas) return;
-    
+
     const categoryChart = new Chart(categoryChartCanvas, {
         type: 'bar',
         data: {

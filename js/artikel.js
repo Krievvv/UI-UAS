@@ -1,10 +1,10 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Load articles
     loadArticles();
-    
+
     // Initialize filter buttons
     initializeFilters();
-    
+
     // Initialize search
     initializeSearch();
 });
@@ -12,9 +12,9 @@ document.addEventListener('DOMContentLoaded', function() {
 // Load articles
 function loadArticles(category = 'all') {
     const articlesContainer = document.getElementById('articles-container');
-    
+
     if (!articlesContainer) return;
-    
+
     // Sample articles data
     const articles = [
         {
@@ -72,15 +72,15 @@ function loadArticles(category = 'all') {
             excerpt: 'Daftar aplikasi yang membantu meningkatkan produktivitas mahasiswa.'
         }
     ];
-    
+
     // Filter articles by category if needed
-    const filteredArticles = category === 'all' 
-        ? articles 
+    const filteredArticles = category === 'all'
+        ? articles
         : articles.filter(article => article.category === category);
-    
+
     // Generate HTML for articles
     let articlesHTML = '';
-    
+
     if (filteredArticles.length === 0) {
         articlesHTML = '<div class="no-results">Tidak ada artikel yang ditemukan.</div>';
     } else {
@@ -101,25 +101,25 @@ function loadArticles(category = 'all') {
             `;
         });
     }
-    
+
     articlesContainer.innerHTML = articlesHTML;
 }
 
 // Initialize filter buttons
 function initializeFilters() {
     const filterButtons = document.querySelectorAll('.filter-btn');
-    
+
     filterButtons.forEach(button => {
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function () {
             // Remove active class from all buttons
             filterButtons.forEach(btn => btn.classList.remove('active'));
-            
+
             // Add active class to clicked button
             this.classList.add('active');
-            
+
             // Get category from data attribute
             const category = this.getAttribute('data-category');
-            
+
             // Load articles with selected category
             loadArticles(category);
         });
@@ -129,24 +129,24 @@ function initializeFilters() {
 // Initialize search
 function initializeSearch() {
     const searchInput = document.getElementById('artikel-search');
-    
+
     if (searchInput) {
-        searchInput.addEventListener('input', function() {
+        searchInput.addEventListener('input', function () {
             const searchTerm = this.value.toLowerCase().trim();
-            
+
             if (searchTerm.length < 2) {
                 // If search term is too short, show all articles
                 loadArticles(getActiveCategory());
                 return;
             }
-            
+
             // Get all article cards
             const articleCards = document.querySelectorAll('.article-card');
-            
+
             articleCards.forEach(card => {
                 const title = card.querySelector('.article-title').textContent.toLowerCase();
                 const excerpt = card.querySelector('.article-excerpt').textContent.toLowerCase();
-                
+
                 // Show/hide based on search term
                 if (title.includes(searchTerm) || excerpt.includes(searchTerm)) {
                     card.style.display = '';
@@ -154,11 +154,11 @@ function initializeSearch() {
                     card.style.display = 'none';
                 }
             });
-            
+
             // Show message if no results
             const visibleCards = document.querySelectorAll('.article-card[style="display: none;"]');
             const noResults = document.querySelector('.no-results');
-            
+
             if (visibleCards.length === articleCards.length) {
                 if (!noResults) {
                     const container = document.getElementById('articles-container');
