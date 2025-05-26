@@ -23,7 +23,7 @@ function loadArticleContent(articleId) {
             category: 'Tips Kuliah',
             date: '12 Mei 2025',
             author: 'Admin',
-            image: 'img/article-detail.jpg',
+            image: 'https://osccdn.medcom.id/images/content/2024/08/27/8d005a005f1bdeb16cc53303df5eb9eb.png',
             content: `
                 <p>Sebagai mahasiswa yang tinggal di kos di daerah Surabaya Timur, mengatur keuangan dengan baik adalah keterampilan penting yang harus dikuasai. Artikel ini akan membahas berbagai tips dan trik untuk menghemat pengeluaran selama kuliah.</p>
 
@@ -51,7 +51,7 @@ function loadArticleContent(articleId) {
             category: 'Tips Kuliah',
             date: '10 Mei 2025',
             author: 'Admin',
-            image: 'img/article-2.jpg',
+            image: 'https://adminsekolah.net/wp-content/uploads/2020/07/TIPS-SUKSES-BELAJAR-ONLINE.png',
             content: `
                 <p>Belajar online telah menjadi bagian penting dari pendidikan modern, terutama sejak pandemi. Artikel ini membahas strategi efektif untuk memaksimalkan pembelajaran online.</p>
 
@@ -71,6 +71,61 @@ function loadArticleContent(articleId) {
                 <p>Istirahat yang cukup, olahraga teratur, dan makan makanan bergizi sangat penting untuk menjaga kesehatan dan kemampuan belajar. Jangan lupa untuk beristirahat sejenak dari layar untuk mengurangi kelelahan mata.</p>
 
                 <p>Dengan menerapkan strategi-strategi di atas, Anda dapat meningkatkan efektivitas belajar online dan mencapai hasil akademik yang lebih baik.</p>
+            `
+        },
+        {
+            id: 3,
+            title: 'Rekomendasi Gadget untuk Mahasiswa',
+            category: 'teknologi',
+            date: '8 Mei 2025',
+            author: 'Admin',
+            image: 'https://i.pinimg.com/736x/53/16/d4/5316d4847dfbdd7239114a07f51a8e68.jpg',
+            content: `
+                <p>Rekomendasi HP Terbaik 2025: Spek Mantap, Harga Terjangkau!</p>
+
+                <h2>1. Samsung Galaxy A55 5G</h2>
+                <p>Samsung Galaxy A55 5G menjadi pilihan menarik untuk kamu yang ingin HP dengan tampilan premium dan performa seimbang. Dukungan update software yang panjang juga jadi nilai tambah.</p>
+                
+                <h2>2. Samsung Galaxy A55 5G</h2>
+                <p>Samsung Galaxy A55 5G menjadi pilihan menarik untuk kamu yang ingin HP dengan tampilan premium dan performa seimbang. Dukungan update software yang panjang juga jadi nilai tambah.</p>
+                
+                <h2>3. Samsung Galaxy A55 5G</h2>
+                <p>Samsung Galaxy A55 5G menjadi pilihan menarik untuk kamu yang ingin HP dengan tampilan premium dan performa seimbang. Dukungan update software yang panjang juga jadi nilai tambah.</p>
+                
+                <h2>4. Samsung Galaxy A55 5G</h2>
+                <p>Samsung Galaxy A55 5G menjadi pilihan menarik untuk kamu yang ingin HP dengan tampilan premium dan performa seimbang. Dukungan update software yang panjang juga jadi nilai tambah.</p>
+
+                <p>Memilih HP terbaik harus disesuaikan dengan kebutuhan kamu. Jika kamu fokus pada fotografi, Redmi Note 13 Pro dan Infinix Zero 30 5G bisa jadi pilihan. Tapi jika kamu butuh performa kencang untuk game, POCO X6 Pro 5G adalah jawabannya.</p>
+            `
+        },
+        {
+            id: 4,
+            title: 'Tempat Nongkrong Murah di Surabaya',
+            category: 'gaya-hidup',
+            date: '5 Mei 2025',
+            author: 'Admin',
+            image: 'https://awsimages.detik.net.id/community/media/visual/2024/04/18/rekomendasi-kafe-di-surabaya-3.jpeg?w=1200',
+            content: `
+                <p>Tempat Nongkrong Murah di Surabaya</p>
+
+                <h2>1. Caturra Espresso </h2>
+                <p>Caturra Espresso terkenal dengan suasananya yang tenang dan desain interior yang estetik. Cocok banget buat kamu yang mau nugas sambil ngopi.</p>
+                
+                <h2>2. TBRK (Taman Baca Rumah Kue) </h2>
+                <p> Lokasi: Jalan Pucang Anom Timur No.17 </p>
+                <p> Harga: Mulai Rp10.000-an </p>
+                <p>Tempat ini unik karena menggabungkan konsep taman baca dan tempat makan. Cocok untuk santai sambil baca buku.</p>
+                
+                <h2>3. Historica Coffee & Pastry</h2>
+                <p>Historica punya interior estetik dengan suasana yang chill, pas banget untuk hangout sore atau malam bareng teman.</p>
+                
+                <h2>4. Carpentier Kitchen</h2>
+                <p> Lokasi: Jalan Untung Suropati No.83 Carpentier Kitchen cocok buat nongkrong lama sambil ngobrol, kerja, atau sekadar me time.</p>
+                
+                <h2>5. Loop Graha Family</h2>
+                <p> Lokasi: Jalan Raya Graha Family Loop cocok banget buat nongkrong rame-rame karena pilihan makanannya banyak dan suasananya hidup.</p>
+
+                <p>Surabaya punya banyak tempat nongkrong murah dengan suasana nyaman dan estetika yang oke. Tinggal pilih sesuai mood kamu — mau ngopi, makan kenyang, atau sekadar duduk-duduk cantik sambil ngobrol.</p>
             `
         }
     ];
@@ -131,21 +186,21 @@ function loadRelatedArticles(currentArticleId) {
             title: 'Cara Efektif Belajar Online',
             category: 'Tips Kuliah',
             date: '10 Mei 2025',
-            image: 'img/article-2.jpg'
+            image: 'https://adminsekolah.net/wp-content/uploads/2020/07/TIPS-SUKSES-BELAJAR-ONLINE.png'
         },
         {
             id: 3,
             title: 'Rekomendasi Gadget untuk Mahasiswa',
             category: 'Teknologi',
             date: '8 Mei 2025',
-            image: 'img/article-3.jpg'
+            image: 'https://i.pinimg.com/736x/53/16/d4/5316d4847dfbdd7239114a07f51a8e68.jpg'
         },
         {
             id: 4,
             title: 'Tempat Nongkrong Murah di Surabaya',
             category: 'Gaya Hidup',
             date: '5 Mei 2025',
-            image: 'img/article-4.jpg'
+            image: 'https://awsimages.detik.net.id/community/media/visual/2024/04/18/rekomendasi-kafe-di-surabaya-3.jpeg?w=1200'
         }
     ].filter(article => article.id !== parseInt(currentArticleId));
 

@@ -3,17 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Keranjang Belanja - AndyShop</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Keranjang Belanja - KrievvvShop</title>
+    <link rel="stylesheet" href="css/style.css"> <link rel="stylesheet" href="css/keranjang.css"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Header/Navbar -->
     <header class="navbar">
         <div class="container">
             <div class="navbar-content">
                 <div class="logo">
-                    <a href="index.html">AndyShop</a>
+                    <a href="index.html">KrievvvShop</a>
                 </div>
                 <div class="search-bar">
                     <input type="text" placeholder="Cari produk...">
@@ -26,8 +24,7 @@
                         <li>
                             <a href="keranjang.html" class="cart-icon active">
                                 <i class="fas fa-shopping-cart"></i>
-                                <span class="cart-count">0</span>
-                            </a>
+                                <span class="cart-count">0</span> </a>
                         </li>
                         <li><a href="dashboard.html" class="user-icon"><i class="fas fa-user"></i></a></li>
                     </ul>
@@ -39,7 +36,6 @@
         </div>
     </header>
 
-    <!-- Mobile Menu -->
     <div class="mobile-menu">
         <div class="mobile-search">
             <input type="text" placeholder="Cari produk...">
@@ -53,23 +49,59 @@
         </ul>
     </div>
 
-    <!-- Main Content -->
     <main>
         <div class="container">
-            <h1 class="page-title">Keranjang Belanja</h1>
+            <div class="cart-header">
+                <h1 class="page-title">Keranjang Belanja Anda</h1>
+                <a href="produk.html" class="continue-shopping-link">
+                    <i class="fas fa-arrow-left"></i> Lanjut Belanja
+                </a>
+            </div>
 
-            <div id="cart-content">
-                <!-- Cart content will be loaded dynamically via JavaScript -->
+            <div class="cart-wrapper">
+                <div class="cart-items-section">
+                    <div id="cart-content">
+                        <p class="cart-loading">Memuat item keranjang...</p>
+                    </div>
+                </div>
+
+                <div class="cart-summary-section">
+                    <div class="cart-summary">
+                        <h3>Ringkasan Belanja</h3>
+                        <div class="summary-row">
+                            <span>Total Item:</span>
+                            <span id="total-items">0 item</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Subtotal:</span>
+                            <span id="subtotal">Rp 0</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Ongkos Kirim:</span>
+                            <span id="shipping">Rp 0</span>
+                        </div>
+                        <hr class="summary-divider">
+                        <div class="summary-row total">
+                            <span>Total Keseluruhan:</span>
+                            <span id="total">Rp 0</span>
+                        </div>
+                        <button id="checkout-button" class="btn-checkout" disabled>
+                            Lanjut ke Pembayaran <i class="fas fa-arrow-right"></i>
+                        </button>
+                        <button id="clear-cart-button" class="btn-clear-cart" style="display: none;">
+                            <i class="fas fa-trash-alt"></i> Kosongkan Keranjang
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-about">
-                    <h3>AndyShop</h3>
+                    <h3>KrievvvShop</h3>
                     <p>Belanja cepat dan mudah, sesuai dengan gaya hidup mahasiswa.</p>
                     <p class="quote">"Kalau ada yang Cepet, Ngapain Ribet"</p>
                 </div>
@@ -85,17 +117,16 @@
                 <div class="footer-contact">
                     <h3>Kontak</h3>
                     <p>Kos, Surabaya Timur</p>
-                    <p>info@andyshop.com</p>
+                    <p>info@Krievvvshop.com</p>
                     <p>+62 812 3456 7890</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; <span id="current-year"></span> AndyShop. Hak Cipta Dilindungi.</p>
+                <p>&copy; <span id="current-year"></span> KrievvvShop. Hak Cipta Dilindungi.</p>
             </div>
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
-    <script src="js/keranjang.js"></script>
+    <script src="js/main.js"></script> <script src="js/keranjang.js"></script>
 </body>
 </html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
     <!-- Header/Navbar -->
     <header class="navbar">
@@ -61,14 +63,42 @@
                 <div class="hero-content">
                     <div class="hero-text">
                         <h1>Belanja Cepat & Mudah untuk Mahasiswa</h1>
-                        <p>Temukan produk kebutuhan mahasiswa dengan harga terjangkau dan pengiriman cepat ke area kos Surabaya Timur.</p>
+                        <p>Temukan produk kebutuhan mahasiswa dengan harga terjangkau dan pengiriman cepat ke area kos
+                            Surabaya Timur.</p>
                         <div class="hero-buttons">
                             <a href="produk.html" class="btn btn-primary">Belanja Sekarang</a>
                             <a href="artikel.html" class="btn btn-outline">Baca Artikel</a>
                         </div>
                     </div>
-                    <div class="hero-image">
-                        <img src="https://mediajatim.com/wp-content/uploads/2019/06/olshop.jpg" alt="Mahasiswa belanja online">
+                    <div class="hero-carousel">
+                        <div class="carousel-container">
+                            <div class="carousel-track">
+                                <!-- Gambar-gambar carousel -->
+                                <div class="carousel-slide active">
+                                    <img src="https://mediajatim.com/wp-content/uploads/2019/06/olshop.jpg"
+                                        alt="Mahasiswa belanja online" class="rounded-image">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8b25saW5lJTIwc2hvcHBpbmd8ZW58MHx8MHx8fDA%3D&w=1000&q=80"
+                                        alt="Belanja kebutuhan mahasiswa" class="rounded-image">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="https://img.freepik.com/free-photo/young-asian-woman-using-mobile-phone-buying-online-shopping-by-credit-card-feeling-happy-smiling-casual-clothing-sitting-desk-work-home-lifestyle-women-working-home-concept_7861-2270.jpg"
+                                        alt="Mahasiswa menggunakan aplikasi belanja" class="rounded-image">
+                                </div>
+                            </div>
+
+                            <!-- Tombol navigasi -->
+                            <button class="carousel-button prev">&lt;</button>
+                            <button class="carousel-button next">&gt;</button>
+
+                            <!-- Indikator slide -->
+                            <div class="carousel-indicators">
+                                <span class="indicator active" data-index="0"></span>
+                                <span class="indicator" data-index="1"></span>
+                                <span class="indicator" data-index="2"></span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -174,4 +204,5 @@
     <script src="js/main.js"></script>
     <script src="js/home.js"></script>
 </body>
+
 </html>

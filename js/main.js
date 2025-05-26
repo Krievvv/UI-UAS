@@ -22,74 +22,53 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 // Cart Functions
-function updateCartCount() {
-    const cartItems = getCartItems();
-    const cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
-
-    const cartCountElements = document.querySelectorAll('.cart-count');
-    cartCountElements.forEach(element => {
-        element.textContent = cartCount;
-    });
+// Add to cart function
+function addToCart(product, quantity = 1) {
+    let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+    
+    const existingItem = cart.find(item => item.id === product.id);
+    
+    if (existingItem) {
+        existingItem.quantity += quantity;
+    } else {
+        cart.push({
+            ...product,
+            quantity: quantity
+        });
+    }
+    
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartCount();
+    
+    // Show success message
+    alert('Produk berhasil ditambahkan ke keranjang!');
 }
 
+// Get cart items
 function getCartItems() {
     return JSON.parse(localStorage.getItem('cart') || '[]');
 }
 
-function saveCartItems(items) {
-    localStorage.setItem('cart', JSON.stringify(items));
-    updateCartCount();
+// Update cart count
+function updateCartCount() {
+    const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+    const count = cart.reduce((total, item) => total + item.quantity, 0);
+    
+    const cartCounts = document.querySelectorAll('.cart-count');
+    cartCounts.forEach(el => {
+        el.textContent = count;
+    });
 }
 
-function addToCart(product, quantity = 1) {
-    const cartItems = getCartItems();
-
-    // Check if product already exists in cart
-    const existingItemIndex = cartItems.findIndex(item => item.id === product.id);
-
-    if (existingItemIndex !== -1) {
-        // Update quantity if product already in cart
-        cartItems[existingItemIndex].quantity += quantity;
-    } else {
-        // Add new product to cart
-        cartItems.push({
-            ...product,
-            quantity
-        });
-    }
-
-    saveCartItems(cartItems);
-
-    // Show success message
-    showToast(`${product.name} ditambahkan ke keranjang!`);
-}
-
-function removeFromCart(productId) {
-    const cartItems = getCartItems();
-    const updatedItems = cartItems.filter(item => item.id !== productId);
-    saveCartItems(updatedItems);
-}
-
-function updateCartItemQuantity(productId, quantity) {
-    const cartItems = getCartItems();
-    const itemIndex = cartItems.findIndex(item => item.id === productId);
-
-    if (itemIndex !== -1) {
-        if (quantity <= 0) {
-            // Remove item if quantity is 0 or less
-            cartItems.splice(itemIndex, 1);
-        } else {
-            // Update quantity
-            cartItems[itemIndex].quantity = quantity;
-        }
-
-        saveCartItems(cartItems);
-    }
-}
-
+// Clear cart
 function clearCart() {
     localStorage.removeItem('cart');
     updateCartCount();
+}
+
+// Format currency
+function formatCurrency(amount) {
+    return 'Rp ' + amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
 }
 
 // Toast notification
@@ -165,11 +144,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
-
-// Format currency
-function formatCurrency(amount) {
-    return 'Rp ' + amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
-}
 
 // Get URL parameters
 function getUrlParam(param) {

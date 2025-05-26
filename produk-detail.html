@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Katalog Produk - AndyShop</title>
+    <title>Detail Produk - KrievvvShop</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Header/Navbar -->
+    <!-- Header/Navbar sama seperti file lain -->
     <header class="navbar">
         <div class="container">
             <div class="navbar-content">
                 <div class="logo">
-                    <a href="index.html">AndyShop</a>
+                    <a href="index.html">KrievvvShop</a>
                 </div>
                 <div class="search-bar">
                     <input type="text" placeholder="Cari produk...">
@@ -56,46 +56,35 @@
     <!-- Main Content -->
     <main>
         <div class="container">
-            <h1 class="page-title">Katalog Produk</h1>
+            <div class="back-link">
+                <a href="produk.html"><i class="fas fa-arrow-left"></i> Kembali ke Katalog</a>
+            </div>
 
-            <!-- Search and Filter -->
-            <div class="search-filter">
-                <div class="search-container">
-                    <input type="text" id="produk-search" placeholder="Cari produk...">
-                    <button type="submit"><i class="fas fa-search"></i></button>
+            <!-- Product Detail Container -->
+            <div class="product-detail" id="product-detail">
+                <!-- Product details will be loaded dynamically via JavaScript -->
+            </div>
+
+            <!-- Product Tabs -->
+            <div class="product-tabs">
+                <div class="tabs-header">
+                    <button class="tab-btn active" data-tab="description">Deskripsi</button>
+                    <button class="tab-btn" data-tab="specification">Spesifikasi</button>
+                    <button class="tab-btn" data-tab="reviews">Ulasan</button>
                 </div>
-                <div class="sort-filter">
-                    <select id="sort-select">
-                        <option value="terbaru">Terbaru</option>
-                        <option value="termurah">Harga: Termurah</option>
-                        <option value="termahal">Harga: Termahal</option>
-                        <option value="rating">Rating Tertinggi</option>
-                    </select>
-                    <button class="filter-btn"><i class="fas fa-filter"></i> Filter</button>
+                <div class="tabs-content">
+                    <div id="description" class="tab-panel active"></div>
+                    <div id="specification" class="tab-panel"></div>
+                    <div id="reviews" class="tab-panel"></div>
                 </div>
             </div>
 
-            <!-- Categories -->
-            <div class="categories">
-                <button class="category-btn active" data-category="all">Semua</button>
-                <button class="category-btn" data-category="elektronik">Elektronik</button>
-                <button class="category-btn" data-category="buku">Buku</button>
-                <button class="category-btn" data-category="alat-tulis">Alat Tulis</button>
-                <button class="category-btn" data-category="kebutuhan-sehari-hari">Kebutuhan Sehari-hari</button>
-            </div>
-
-            <!-- Products Grid -->
-            <div class="products-grid" id="products-container">
-                <!-- Products will be loaded dynamically via JavaScript -->
-            </div>
-
-            <!-- Pagination -->
-            <div class="pagination">
-                <button class="pagination-btn disabled">Sebelumnya</button>
-                <button class="pagination-btn active">1</button>
-                <button class="pagination-btn">2</button>
-                <button class="pagination-btn">3</button>
-                <button class="pagination-btn">Selanjutnya</button>
+            <!-- Related Products -->
+            <div class="related-products">
+                <h2>Produk Terkait</h2>
+                <div class="products-grid" id="related-products">
+                    <!-- Related products will be loaded dynamically -->
+                </div>
             </div>
         </div>
     </main>
@@ -105,7 +94,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-about">
-                    <h3>AndyShop</h3>
+                    <h3>KrievvvShop</h3>
                     <p>Belanja cepat dan mudah, sesuai dengan gaya hidup mahasiswa.</p>
                     <p class="quote">"Kalau ada yang Cepet, Ngapain Ribet"</p>
                 </div>
@@ -121,17 +110,17 @@
                 <div class="footer-contact">
                     <h3>Kontak</h3>
                     <p>Kos, Surabaya Timur</p>
-                    <p>info@andyshop.com</p>
+                    <p>info@Krievvvshop.com</p>
                     <p>+62 812 3456 7890</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; <span id="current-year"></span> AndyShop. Hak Cipta Dilindungi.</p>
+                <p>&copy; <span id="current-year"></span> KrievvvShop. Hak Cipta Dilindungi.</p>
             </div>
         </div>
     </footer>
 
     <script src="js/main.js"></script>
-    <script src="js/produk.js"></script>
+    <script src="js/produk-detail.js"></script>
 </body>
-</html> 
+</html>

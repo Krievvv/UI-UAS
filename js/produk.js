@@ -70,7 +70,7 @@ function loadProducts(category = 'all', sortBy = 'terbaru') {
             category: 'elektronik',
             categoryName: 'Elektronik',
             price: 150000,
-            image: 'img/product-5.jpg',
+            image: 'https://down-id.img.susercontent.com/file/id-11134207-7qukx-lfg8jc1oul4qa1',
             rating: 4.4,
             reviews: 56,
             date: new Date('2025-04-20')
@@ -81,7 +81,7 @@ function loadProducts(category = 'all', sortBy = 'terbaru') {
             category: 'elektronik',
             categoryName: 'Elektronik',
             price: 350000,
-            image: 'img/product-6.jpg',
+            image: 'https://images.tokopedia.net/img/cache/700/VqbcmM/2022/6/13/78c49d1e-e509-4ba3-8848-f0c7210a13a1.jpg',
             rating: 4.9,
             reviews: 38,
             date: new Date('2025-04-18')
@@ -92,7 +92,7 @@ function loadProducts(category = 'all', sortBy = 'terbaru') {
             category: 'kebutuhan-sehari-hari',
             categoryName: 'Kebutuhan Sehari-hari',
             price: 15000,
-            image: 'img/product-7.jpg',
+            image: 'https://image.astronauts.cloud/product-images/2024/7/Sdbs_6e43337f-bd6d-418d-9bae-be0a9d1a9751_900x900.jpg',
             rating: 4.3,
             reviews: 92,
             date: new Date('2025-04-15')
@@ -103,7 +103,7 @@ function loadProducts(category = 'all', sortBy = 'terbaru') {
             category: 'kebutuhan-sehari-hari',
             categoryName: 'Kebutuhan Sehari-hari',
             price: 5000,
-            image: 'img/product-8.jpg',
+            image: 'https://images.tokopedia.net/img/cache/500-square/VqbcmM/2021/8/4/bd02bab6-229c-4c6c-ad21-6a4b51bfb534.jpg',
             rating: 4.2,
             reviews: 78,
             date: new Date('2025-04-12')
@@ -141,7 +141,7 @@ function loadProducts(category = 'all', sortBy = 'terbaru') {
         filteredProducts.forEach(product => {
             productsHTML += `
                 <div class="product-card">
-                    <a href="produk-detail.html?id=${product.id}">
+                    <a href="produk-detail.html?id=${product.id}" class="product-link">
                         <div class="product-image">
                             <img src="${product.image}" alt="${product.name}">
                         </div>
@@ -149,10 +149,8 @@ function loadProducts(category = 'all', sortBy = 'terbaru') {
                             <div class="product-category">${product.categoryName}</div>
                             <h3 class="product-title">${product.name}</h3>
                             <div class="product-rating">
-                                <div class="stars">
-                                    ${generateStarRating(product.rating)}
-                                    <span>${product.rating} (${product.reviews})</span>
-                                </div>
+                                ${generateStarRating(product.rating)}
+                                <span>(${product.reviews})</span>
                             </div>
                             <div class="product-price">${formatCurrency(product.price)}</div>
                         </div>
@@ -163,6 +161,11 @@ function loadProducts(category = 'all', sortBy = 'terbaru') {
     }
 
     productsContainer.innerHTML = productsHTML;
+}
+
+// Format currency (unchanged)
+function formatCurrency(amount) {
+    return 'Rp ' + amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
 }
 
 // Initialize category buttons
@@ -280,4 +283,10 @@ function generateStarRating(rating) {
     }
 
     return starsHTML;
+}
+
+// Helper function to get URL parameters
+function getUrlParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
 }

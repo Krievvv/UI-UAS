@@ -1,208 +1,245 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Load cart content
     loadCartContent();
+    updateCartSummary();
+    initializeGlobalEventListeners(); // Untuk event delegation
 });
 
-// Load cart content
+// Asumsi fungsi-fungsi ini ada di main.js atau di sini
+// Jika belum ada, Anda perlu mengimplementasikannya
+function getCartItems() {
+    // Contoh implementasi:
+    const items = localStorage.getItem('cart');
+    return items ? JSON.parse(items) : [];
+    // return [ // Contoh data untuk testing
+    //     { id: 1, name: 'Headphone Bluetooth Mahasiswa Edition', price: 299000, quantity: 1, image: 'https://via.placeholder.com/100' },
+    //     { id: 2, name: 'Mouse Gaming Keren', price: 150000, quantity: 2, image: 'https://via.placeholder.com/100' }
+    // ];
+}
+
+function updateCartItemQuantity(productId, quantity) {
+    let cartItems = getCartItems();
+    const itemIndex = cartItems.findIndex(item => item.id === productId);
+    if (itemIndex > -1) {
+        cartItems[itemIndex].quantity = quantity;
+        localStorage.setItem('cart', JSON.stringify(cartItems));
+        updateCartCount(); // Update cart count in navbar
+    }
+}
+
+function removeFromCart(productId) {
+    let cartItems = getCartItems();
+    cartItems = cartItems.filter(item => item.id !== productId);
+    localStorage.setItem('cart', JSON.stringify(cartItems));
+    updateCartCount(); // Update cart count in navbar
+}
+
+function clearCart() {
+    localStorage.removeItem('cart');
+    updateCartCount(); // Update cart count in navbar
+}
+
+function formatCurrency(amount) {
+    // Contoh implementasi sederhana:
+    return 'Rp ' + amount.toLocaleString('id-ID');
+    // Implementasi lebih baik jika sudah ada
+}
+
+function updateCartCount() {
+    // Fungsi untuk update angka di ikon keranjang di navbar
+    const cartItems = getCartItems();
+    const cartCountElement = document.querySelector('.cart-count');
+    if (cartCountElement) {
+        cartCountElement.textContent = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+    }
+}
+// Akhir fungsi asumsi
+
 function loadCartContent() {
     const cartContentContainer = document.getElementById('cart-content');
-
-    if (!cartContentContainer) return;
-
-    // Get cart items from localStorage
     const cartItems = getCartItems();
 
-    // Generate cart HTML
-    let cartHTML = '';
+    // Hapus pesan loading jika ada
+    const loadingMessage = cartContentContainer.querySelector('.cart-loading');
+    if (loadingMessage) loadingMessage.remove();
 
     if (cartItems.length === 0) {
-        // Empty cart
-        cartHTML = `
+        cartContentContainer.innerHTML = `
             <div class="empty-cart">
                 <div class="empty-cart-icon">
                     <i class="fas fa-shopping-cart"></i>
                 </div>
                 <h2>Keranjang Belanja Anda Kosong</h2>
                 <p>Anda belum menambahkan produk apapun ke keranjang.</p>
-                <a href="produk.html" class="btn btn-primary">Belanja Sekarang</a>
+                <a href="produk.html" class="btn-shop">Mulai Belanja</a>
             </div>
         `;
-    } else {
-        // Cart with items
-        const subtotal = calculateSubtotal(cartItems);
+        document.getElementById('clear-cart-button').style.display = 'none';
+        return;
+    }
 
-        cartHTML = `
-            <div class="cart-container">
-                <div class="cart-items">
-                    ${cartItems.map(item => `
-                        <div class="cart-item" data-id="${item.id}">
-                            <div class="cart-item-image">
-                                <img src="${item.image}" alt="${item.name}">
-                            </div>
-                            <div class="cart-item-details">
-                                <h3 class="cart-item-title">${item.name}</h3>
-                                <div class="cart-item-category">${item.category}</div>
-                                <div class="cart-item-price">${formatCurrency(item.price)}</div>
-                                <div class="product-quantity">
-                                    <div class="quantity-control">
-                                        <button class="quantity-btn minus" data-id="${item.id}">-</button>
-                                        <input type="number" value="${item.quantity}" min="1" max="50" class="item-quantity" data-id="${item.id}">
-                                        <button class="quantity-btn plus" data-id="${item.id}">+</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <button class="remove-item-btn" data-id="${item.id}">
-                                <i class="fas fa-trash"></i>
+    document.getElementById('clear-cart-button').style.display = 'block';
+    let cartHTML = '';
+    cartItems.forEach(item => {
+        cartHTML += `
+            <div class="cart-item" data-id="${item.id}">
+                <div class="item-image">
+                    <img src="${item.image}" alt="${item.name}">
+                </div>
+                <div class="item-details">
+                    <div class="item-info">
+                        <h3 class="item-name">${item.name}</h3>
+                        <div class="item-price">${formatCurrency(item.price)}</div>
+                    </div>
+                    <div class="item-controls">
+                        <div class="quantity-controls">
+                            <button class="quantity-btn minus" aria-label="Kurangi jumlah" data-action="decrease">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <input type="number" class="item-quantity" value="${item.quantity}" min="1" max="50" aria-label="Jumlah item">
+                            <button class="quantity-btn plus" aria-label="Tambah jumlah" data-action="increase">
+                                <i class="fas fa-plus"></i>
                             </button>
                         </div>
-                    `).join('')}
-                    
-                    <div class="cart-actions">
-                        <a href="produk.html" class="btn btn-outline">Lanjut Belanja</a>
-                        <button class="btn btn-outline clear-cart-btn">Kosongkan Keranjang</button>
+                        <button class="remove-item" aria-label="Hapus item" data-action="remove">
+                            <i class="fas fa-trash"></i>
+                        </button>
                     </div>
-                </div>
-                
-                <div class="cart-summary">
-                    <h3 class="summary-title">Ringkasan Belanja</h3>
-                    <div class="summary-row">
-                        <span>Total Harga (${cartItems.length} barang)</span>
-                        <span id="subtotal">${formatCurrency(subtotal)}</span>
-                    </div>
-                    <div class="summary-row">
-                        <span>Pengiriman</span>
-                        <span id="shipping">Rp 15.000</span>
-                    </div>
-                    <div class="summary-row total">
-                        <span>Total</span>
-                        <span id="total">${formatCurrency(subtotal + 15000)}</span>
-                    </div>
-                    <a href="pembayaran.html" class="btn btn-primary btn-block">Checkout</a>
                 </div>
             </div>
         `;
-    }
+    });
 
     cartContentContainer.innerHTML = cartHTML;
-
-    // Initialize cart events
-    if (cartItems.length > 0) {
-        initializeCartEvents();
-    }
 }
 
-// Initialize cart events
-function initializeCartEvents() {
-    // Quantity buttons
-    const minusButtons = document.querySelectorAll('.quantity-btn.minus');
-    const plusButtons = document.querySelectorAll('.quantity-btn.plus');
-    const quantityInputs = document.querySelectorAll('.item-quantity');
-    const removeButtons = document.querySelectorAll('.remove-item-btn');
-    const clearCartBtn = document.querySelector('.clear-cart-btn');
+function initializeGlobalEventListeners() {
+    const cartContentContainer = document.getElementById('cart-content');
 
-    // Minus buttons
-    minusButtons.forEach(button => {
-        button.addEventListener('click', function () {
-            const productId = parseInt(this.getAttribute('data-id'));
-            const input = document.querySelector(`.item-quantity[data-id="${productId}"]`);
-            let quantity = parseInt(input.value);
+    // Event listener untuk tombol di dalam item keranjang (delegation)
+    if (cartContentContainer) {
+        cartContentContainer.addEventListener('click', function(event) {
+            const target = event.target;
+            const cartItemElement = target.closest('.cart-item');
+            if (!cartItemElement) return;
 
-            if (quantity > 1) {
-                quantity--;
-                input.value = quantity;
+            const productId = parseInt(cartItemElement.dataset.id);
+            const action = target.closest('[data-action]')?.dataset.action;
+
+            if (action === 'increase' || action === 'decrease') {
+                const quantityInput = cartItemElement.querySelector('.item-quantity');
+                let quantity = parseInt(quantityInput.value);
+                if (action === 'increase' && quantity < 50) quantity++;
+                if (action === 'decrease' && quantity > 1) quantity--;
+                quantityInput.value = quantity;
+                updateCartItemQuantity(productId, quantity);
+                updateCartSummary();
+            } else if (action === 'remove') {
+                if (confirm('Apakah Anda yakin ingin menghapus item ini dari keranjang?')) {
+                    removeFromCart(productId);
+                    loadCartContent(); // Reload content untuk menghapus item dari DOM
+                    updateCartSummary();
+                }
+            }
+        });
+
+        cartContentContainer.addEventListener('change', function(event) {
+            const target = event.target;
+            if (target.classList.contains('item-quantity')) {
+                const cartItemElement = target.closest('.cart-item');
+                if (!cartItemElement) return;
+
+                const productId = parseInt(cartItemElement.dataset.id);
+                let quantity = parseInt(target.value);
+
+                if (isNaN(quantity) || quantity < 1) {
+                    quantity = 1;
+                } else if (quantity > 50) { // Max quantity
+                    quantity = 50;
+                }
+                target.value = quantity; // Update input field dengan nilai yang valid
                 updateCartItemQuantity(productId, quantity);
                 updateCartSummary();
             }
         });
-    });
+    }
 
-    // Plus buttons
-    plusButtons.forEach(button => {
-        button.addEventListener('click', function () {
-            const productId = parseInt(this.getAttribute('data-id'));
-            const input = document.querySelector(`.item-quantity[data-id="${productId}"]`);
-            let quantity = parseInt(input.value);
+    // Event listener untuk tombol di luar item (Checkout & Clear Cart)
+    const checkoutButton = document.getElementById('checkout-button');
+    if (checkoutButton) {
+        checkoutButton.addEventListener('click', function() {
+            // Logika checkout Anda sudah benar, pastikan checkLoginStatus() ada jika diperlukan
+            // if (!checkLoginStatus()) {
+            //     alert('Silakan login terlebih dahulu untuk melanjutkan pembayaran.');
+            //     // window.location.href = 'login.html'; // Arahkan ke login
+            //     return;
+            // }
 
-            if (quantity < 50) {
-                quantity++;
-                input.value = quantity;
-                updateCartItemQuantity(productId, quantity);
-                updateCartSummary();
-            }
-        });
-    });
-
-    // Quantity inputs
-    quantityInputs.forEach(input => {
-        input.addEventListener('change', function () {
-            const productId = parseInt(this.getAttribute('data-id'));
-            let quantity = parseInt(this.value);
-
-            // Validate quantity
-            if (isNaN(quantity) || quantity < 1) {
-                quantity = 1;
-                this.value = 1;
-            } else if (quantity > 50) {
-                quantity = 50;
-                this.value = 50;
-            }
-
-            updateCartItemQuantity(productId, quantity);
-            updateCartSummary();
-        });
-    });
-
-    // Remove buttons
-    removeButtons.forEach(button => {
-        button.addEventListener('click', function () {
-            const productId = parseInt(this.getAttribute('data-id'));
-            removeFromCart(productId);
-
-            // Remove item from DOM
-            const cartItem = document.querySelector(`.cart-item[data-id="${productId}"]`);
-            cartItem.remove();
-
-            // Update cart summary
-            updateCartSummary();
-
-            // Reload cart if empty
             const cartItems = getCartItems();
-            if (cartItems.length === 0) {
-                loadCartContent();
+            if (cartItems.length > 0) {
+                const subtotal = calculateSubtotal(cartItems);
+                const shipping = cartItems.length > 0 ? 15000 : 0; // Sama seperti di updateCartSummary
+                const total = subtotal + shipping;
+
+                localStorage.setItem('checkout_items', JSON.stringify(cartItems));
+                localStorage.setItem('checkout_subtotal', subtotal.toString());
+                localStorage.setItem('checkout_shipping', shipping.toString());
+                localStorage.setItem('checkout_total', total.toString());
+
+                window.location.href = 'pembayaran.html';
             }
         });
-    });
+    }
 
-    // Clear cart button
-    if (clearCartBtn) {
-        clearCartBtn.addEventListener('click', function () {
+    const clearCartButton = document.getElementById('clear-cart-button');
+    if (clearCartButton) {
+        clearCartButton.addEventListener('click', function() {
             if (confirm('Apakah Anda yakin ingin mengosongkan keranjang?')) {
                 clearCart();
                 loadCartContent();
+                updateCartSummary();
             }
         });
     }
 }
 
-// Update cart summary
+
 function updateCartSummary() {
     const cartItems = getCartItems();
     const subtotal = calculateSubtotal(cartItems);
+    const shipping = cartItems.length > 0 ? 15000 : 0; // Biaya kirim jika ada item
+    const total = subtotal + shipping;
 
-    // Update subtotal
-    const subtotalElement = document.getElementById('subtotal');
-    if (subtotalElement) {
-        subtotalElement.textContent = formatCurrency(subtotal);
+    document.getElementById('total-items').textContent = `${cartItems.reduce((sum, item) => sum + item.quantity, 0)} item`;
+    document.getElementById('subtotal').textContent = formatCurrency(subtotal);
+    document.getElementById('shipping').textContent = formatCurrency(shipping);
+    document.getElementById('total').textContent = formatCurrency(total);
+
+    const checkoutButton = document.getElementById('checkout-button');
+    if (checkoutButton) {
+        checkoutButton.disabled = cartItems.length === 0;
     }
 
-    // Update total
-    const totalElement = document.getElementById('total');
-    if (totalElement) {
-        totalElement.textContent = formatCurrency(subtotal + 15000);
+    const clearCartBtn = document.getElementById('clear-cart-button');
+    if (clearCartBtn) {
+        clearCartBtn.style.display = cartItems.length > 0 ? 'block' : 'none';
     }
+
+    updateCartCount(); // Untuk sinkronisasi dengan counter di navbar
 }
 
-// Calculate subtotal
 function calculateSubtotal(cartItems) {
     return cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
 }
+
+// Fungsi untuk mengisi tahun copyright di footer (dari main.js Anda)
+const currentYearSpan = document.getElementById('current-year');
+if (currentYearSpan) {
+    currentYearSpan.textContent = new Date().getFullYear();
+}
+
+// (Opsional) Fungsi checkLoginStatus jika Anda memerlukannya sebelum checkout
+// function checkLoginStatus() {
+//     // Implementasi pengecekan status login, misalnya dari localStorage atau session
+//     // return localStorage.getItem('isLoggedIn') === 'true'; 
+//     return true; // Placeholder, asumsikan selalu login untuk contoh ini
+// }

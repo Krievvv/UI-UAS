@@ -23,7 +23,7 @@ function loadArticles(category = 'all') {
             category: 'tips-kuliah',
             categoryName: 'Tips Kuliah',
             date: '12 Mei 2025',
-            image: 'img/article-1.jpg',
+            image: 'https://osccdn.medcom.id/images/content/2024/08/27/8d005a005f1bdeb16cc53303df5eb9eb.png',
             excerpt: 'Berbagai cara menghemat pengeluaran selama kuliah tanpa mengurangi kualitas hidup.'
         },
         {
@@ -32,7 +32,7 @@ function loadArticles(category = 'all') {
             category: 'tips-kuliah',
             categoryName: 'Tips Kuliah',
             date: '10 Mei 2025',
-            image: 'img/article-2.jpg',
+            image: 'https://adminsekolah.net/wp-content/uploads/2020/07/TIPS-SUKSES-BELAJAR-ONLINE.png',
             excerpt: 'Strategi belajar online yang efektif untuk mahasiswa di era digital.'
         },
         {
@@ -41,7 +41,7 @@ function loadArticles(category = 'all') {
             category: 'teknologi',
             categoryName: 'Teknologi',
             date: '8 Mei 2025',
-            image: 'img/article-3.jpg',
+            image: 'https://i.pinimg.com/736x/53/16/d4/5316d4847dfbdd7239114a07f51a8e68.jpg',
             excerpt: 'Pilihan gadget terbaik untuk menunjang kegiatan perkuliahan dengan budget terbatas.'
         },
         {
@@ -50,7 +50,7 @@ function loadArticles(category = 'all') {
             category: 'gaya-hidup',
             categoryName: 'Gaya Hidup',
             date: '5 Mei 2025',
-            image: 'img/article-4.jpg',
+            image: 'https://awsimages.detik.net.id/community/media/visual/2024/04/18/rekomendasi-kafe-di-surabaya-3.jpeg?w=1200',
             excerpt: 'Rekomendasi tempat nongkrong dengan harga terjangkau untuk mahasiswa di Surabaya.'
         },
         {
