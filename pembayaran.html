@@ -5,68 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pembayaran - KrievvvShop</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        .error-message {
-            color: red;
-            font-size: 0.8em;
-            display: block; /* Or inline-block, depending on layout */
-            margin-top: 4px;
-        }
-        .input-error {
-            border-color: red !important;
-        }
-        .payment-method label {
-            display: flex;
-            align-items: center;
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            margin-bottom: 10px;
-            cursor: pointer;
-            transition: background-color 0.3s, border-color 0.3s;
-        }
-        .payment-method input[type="radio"] {
-            display: none; /* Hide the actual radio button */
-        }
-        .payment-method.active label,
-        .payment-method label:hover {
-            background-color: #f0f8ff; /* Light blue for hover/active */
-            border-color: #007bff; /* Primary color for active border */
-        }
-        .payment-method i {
-            margin-right: 15px;
-            font-size: 1.5em;
-            color: #007bff;
-        }
-        .payment-method .method-name {
-            font-weight: bold;
-        }
-        .payment-method .method-desc {
-            font-size: 0.9em;
-            color: #555;
-        }
-        .checkout-item-image img {
-            max-width: 60px; /* Adjust as needed */
-            height: auto;
-            border-radius: 4px;
-        }
-        /* Simple spinner for button */
-        .spinner {
-            display: inline-block;
-            width: 1em;
-            height: 1em;
-            border: 2px solid rgba(255,255,255,.3);
-            border-radius: 50%;
-            border-top-color: #fff;
-            animation: spin 1s ease-in-out infinite;
-            margin-right: 5px;
-            vertical-align: middle;
-        }
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-    </style>
+    <link rel="stylesheet" href="css/pembayaran.css"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <header class="navbar">
@@ -86,7 +25,8 @@
                         <li>
                             <a href="keranjang.html" class="cart-icon">
                                 <i class="fas fa-shopping-cart"></i>
-                                <span class="cart-count">0</span> </a>
+                                <span class="cart-count">0</span>
+                            </a>
                         </li>
                         <li><a href="dashboard.html" class="user-icon"><i class="fas fa-user"></i></a></li>
                     </ul>
@@ -99,10 +39,6 @@
     </header>
 
     <div class="mobile-menu">
-        <div class="mobile-search">
-            <input type="text" placeholder="Cari produk...">
-            <button type="submit"><i class="fas fa-search"></i></button>
-        </div>
         <ul>
             <li><a href="artikel.html">Artikel</a></li>
             <li><a href="produk.html">Produk</a></li>
@@ -113,155 +49,151 @@
 
     <main>
         <div class="container">
-            <div class="back-link">
-                <a href="keranjang.html"><i class="fas fa-arrow-left"></i> Kembali ke Keranjang</a>
+            <div class="breadcrumb-checkout">
+                <a href="index.html">Home</a> <i class="fas fa-chevron-right"></i>
+                <a href="produk.html">Produk</a> <i class="fas fa-chevron-right"></i>
+                <a href="keranjang.html">Keranjang</a> <i class="fas fa-chevron-right"></i>
+                <span>Pembayaran</span>
             </div>
 
-            <h1 class="page-title">Pembayaran</h1>
+            <h1 class="page-title">Proses Pembayaran</h1>
 
-            <div class="checkout-container">
-                <div class="checkout-form">
-                    <form id="checkout-main-form"> <fieldset class="checkout-section">
-                            <legend><h3>Informasi Pengiriman</h3></legend>
+            <div class="checkout-layout">
+                <div class="checkout-form-container">
+                    <form id="checkout-main-form" novalidate>
+                        <fieldset class="checkout-section">
+                            <legend><h3><i class="fas fa-truck"></i> Informasi Pengiriman</h3></legend>
                             <div class="form-row">
                                 <div class="form-group">
                                     <label for="name">Nama Lengkap</label>
-                                    <input type="text" id="name" name="name" placeholder="Masukkan nama lengkap" value="Krievvv">
+                                    <input type="text" id="name" name="name" placeholder="Masukkan nama lengkap" value="Krievvv" required>
                                     <span class="error-message" id="name-error"></span>
                                 </div>
                                 <div class="form-group">
                                     <label for="phone">Nomor Telepon</label>
-                                    <input type="text" id="phone" name="phone" placeholder="Masukkan nomor telepon" value="081234567890">
+                                    <input type="tel" id="phone" name="phone" placeholder="Contoh: 081234567890" value="081234567890" required pattern="^(08)\d{8,11}$">
                                     <span class="error-message" id="phone-error"></span>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <input type="email" id="email" name="email" placeholder="Masukkan email" value="Krievvv@example.com">
+                                <input type="email" id="email" name="email" placeholder="Masukkan email valid" value="krievvv@example.com" required>
                                 <span class="error-message" id="email-error"></span>
                             </div>
                             <div class="form-group">
                                 <label for="address">Alamat Lengkap</label>
-                                <textarea id="address" name="address" placeholder="Masukkan alamat lengkap">Jl. Kos Indah No. 123, Surabaya Timur</textarea>
+                                <textarea id="address" name="address" placeholder="Nama jalan, nomor rumah, RT/RW" required>Jl. Kos Indah No. 123, Surabaya Timur</textarea>
                                 <span class="error-message" id="address-error"></span>
                             </div>
                             <div class="form-row">
                                 <div class="form-group">
-                                    <label for="city">Kota</label>
-                                    <input type="text" id="city" name="city" placeholder="Kota" value="Surabaya">
+                                    <label for="city">Kota/Kabupaten</label>
+                                    <input type="text" id="city" name="city" placeholder="Kota atau Kabupaten" value="Surabaya" required>
                                     <span class="error-message" id="city-error"></span>
                                 </div>
                                 <div class="form-group">
                                     <label for="province">Provinsi</label>
-                                    <input type="text" id="province" name="province" placeholder="Provinsi" value="Jawa Timur">
+                                    <input type="text" id="province" name="province" placeholder="Provinsi" value="Jawa Timur" required>
                                     <span class="error-message" id="province-error"></span>
                                 </div>
+                            </div>
+                             <div class="form-row">
                                 <div class="form-group">
                                     <label for="postal">Kode Pos</label>
-                                    <input type="text" id="postal" name="postal" placeholder="Kode Pos" value="60115">
+                                    <input type="text" id="postal" name="postal" placeholder="Kode Pos (5 digit)" value="60115" required pattern="^\d{5}$">
                                     <span class="error-message" id="postal-error"></span>
                                 </div>
+                                <div class="form-group">
+                                    </div>
                             </div>
                         </fieldset>
 
                         <fieldset class="checkout-section">
-                            <legend><h3>Metode Pembayaran</h3></legend>
-                            <div class="payment-methods">
-                                <div class="payment-method active"> <input type="radio" id="bank" name="payment" value="bank" checked>
+                            <legend><h3><i class="fas fa-credit-card"></i> Metode Pembayaran</h3></legend>
+                            <div class="payment-methods-group">
+                                <div class="payment-method" data-value="bank">
+                                    <input type="radio" id="bank" name="payment_method" value="bank" checked>
                                     <label for="bank">
                                         <i class="fas fa-university"></i>
                                         <div>
                                             <div class="method-name">Transfer Bank</div>
                                             <div class="method-desc">BCA, BNI, Mandiri, BRI</div>
                                         </div>
+                                        <span class="radio-custom-indicator"></span>
                                     </label>
                                 </div>
-                                <div class="payment-method">
-                                    <input type="radio" id="ewallet" name="payment" value="ewallet">
+                                <div class="payment-method" data-value="ewallet">
+                                    <input type="radio" id="ewallet" name="payment_method" value="ewallet">
                                     <label for="ewallet">
                                         <i class="fas fa-wallet"></i>
                                         <div>
                                             <div class="method-name">E-Wallet</div>
                                             <div class="method-desc">GoPay, OVO, DANA, LinkAja</div>
                                         </div>
+                                        <span class="radio-custom-indicator"></span>
                                     </label>
                                 </div>
-                                <div class="payment-method">
-                                    <input type="radio" id="qris" name="payment" value="qris">
+                                <div class="payment-method" data-value="qris">
+                                    <input type="radio" id="qris" name="payment_method" value="qris">
                                     <label for="qris">
                                         <i class="fas fa-qrcode"></i>
                                         <div>
                                             <div class="method-name">QRIS</div>
                                             <div class="method-desc">Scan untuk pembayaran instan</div>
                                         </div>
+                                        <span class="radio-custom-indicator"></span>
                                     </label>
                                 </div>
                             </div>
-                            <span class="error-message" id="payment-error"></span> <div class="form-group">
+                            <span class="error-message" id="payment_method-error"></span>
+                        </fieldset>
+                        
+                        <fieldset class="checkout-section">
+                            <legend><h3><i class="fas fa-sticky-note"></i> Catatan Tambahan</h3></legend>
+                            <div class="form-group">
                                 <label for="notes">Catatan Pesanan (Opsional)</label>
-                                <textarea id="notes" name="notes" placeholder="Tambahkan catatan untuk pesanan Anda"></textarea>
+                                <textarea id="notes" name="notes" placeholder="Misal: Request jam pengiriman, warna tertentu jika ada opsi, dll."></textarea>
                             </div>
                         </fieldset>
                     </form>
                 </div>
 
-                <div class="order-summary">
-                    <h3>Ringkasan Pesanan</h3>
-                    <div id="checkout-items">
-                        <p class="loading-text">Memuat item keranjang...</p>
-                    </div>
-                    <div class="summary-totals">
-                        <div class="summary-row">
-                            <span>Subtotal</span>
-                            <span id="subtotal">Rp 0</span>
+                <div class="order-summary-container">
+                    <div class="order-summary-card">
+                        <h3><i class="fas fa-shopping-bag"></i> Ringkasan Pesanan</h3>
+                        <div id="checkout-items-list">
+                            <p class="loading-text">Memuat item...</p>
                         </div>
-                        <div class="summary-row">
-                            <span>Pengiriman</span>
-                            <span id="shipping">Rp 15.000</span> </div>
-                        <div class="summary-row total">
-                            <span>Total</span>
-                            <span id="total">Rp 0</span>
+                        <div class="summary-totals">
+                            <div class="summary-row">
+                                <span>Subtotal</span>
+                                <span id="checkout-subtotal">Rp 0</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Pengiriman</span>
+                                <span id="checkout-shipping">Rp 0</span>
+                            </div>
+                            <hr class="summary-divider">
+                            <div class="summary-row total">
+                                <span>Total Pembayaran</span>
+                                <span id="checkout-total">Rp 0</span>
+                            </div>
                         </div>
+                        <button type="submit" form="checkout-main-form" id="pay-button" class="btn-pay" disabled>
+                            <span class="button-text">Bayar Sekarang</span>
+                            <span class="spinner" style="display: none;"></span>
+                        </button>
+                        <p class="terms-agreement">Dengan melanjutkan, saya setuju dengan <a href="syarat-ketentuan.html" target="_blank">Syarat & Ketentuan</a> dan <a href="kebijakan-privasi.html" target="_blank">Kebijakan Privasi</a>.</p>
                     </div>
-                    <button id="pay-button" class="btn btn-primary btn-block" disabled>
-                        <span class="button-text">Bayar Sekarang</span>
-                    </button>
-                    <p class="terms">Dengan melakukan pembayaran, Anda menyetujui <a href="syarat-ketentuan.html" target="_blank">Syarat dan Ketentuan</a> serta <a href="kebijakan-privasi.html" target="_blank">Kebijakan Privasi</a> kami.</p>
                 </div>
             </div>
         </div>
     </main>
 
     <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-about">
-                    <h3>KrievvvShop</h3>
-                    <p>Belanja cepat dan mudah, sesuai dengan gaya hidup mahasiswa.</p>
-                    <p class="quote">"Kalau ada yang Cepet, Ngapain Ribet"</p>
-                </div>
-                <div class="footer-links">
-                    <h3>Tautan</h3>
-                    <ul>
-                        <li><a href="index.html">Beranda</a></li>
-                        <li><a href="artikel.html">Artikel</a></li>
-                        <li><a href="produk.html">Produk</a></li>
-                        <li><a href="keranjang.html">Keranjang</a></li>
-                    </ul>
-                </div>
-                <div class="footer-contact">
-                    <h3>Kontak</h3>
-                    <p>Kos, Surabaya Timur</p>
-                    <p>info@Krievvvshop.com</p>
-                    <p>+62 812 3456 7890</p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; <span id="current-year"></span> KrievvvShop. Hak Cipta Dilindungi.</p>
-            </div>
-        </div>
-    </footer>
+       </footer>
 
-    <script src="js/main.js"></script> <script src="js/pembayaran.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/pembayaran.js"></script>
 </body>
 </html>

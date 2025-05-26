@@ -37,7 +37,7 @@ function loadProducts(category = 'all', sortBy = 'terbaru') {
             category: 'alat-tulis',
             categoryName: 'Alat Tulis',
             price: 45000,
-            image: 'https://down-id.img.susercontent.com/file/a905daf36db4379d7973c88090864fbd',
+            image: 'https://i.pinimg.com/736x/ed/9c/42/ed9c42752976d5c7f490714808ac3526.jpg',
             rating: 4.5,
             reviews: 85,
             date: new Date('2025-04-28')
@@ -59,7 +59,7 @@ function loadProducts(category = 'all', sortBy = 'terbaru') {
             category: 'buku',
             categoryName: 'Buku',
             price: 75000,
-            image: 'https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full/catalog-image/107/MTA-154926368/gramedia_gramedia_full01.jpg',
+            image: 'https://i.pinimg.com/736x/20/bb/a7/20bba7ccd98273ce8d6fb5e73eea24d3.jpg',
             rating: 4.6,
             reviews: 42,
             date: new Date('2025-04-22')
@@ -70,7 +70,7 @@ function loadProducts(category = 'all', sortBy = 'terbaru') {
             category: 'elektronik',
             categoryName: 'Elektronik',
             price: 150000,
-            image: 'https://down-id.img.susercontent.com/file/id-11134207-7qukx-lfg8jc1oul4qa1',
+            image: 'https://i.pinimg.com/736x/2b/20/46/2b2046c848ce96ac8c2462543aff974b.jpg',
             rating: 4.4,
             reviews: 56,
             date: new Date('2025-04-20')
@@ -81,7 +81,7 @@ function loadProducts(category = 'all', sortBy = 'terbaru') {
             category: 'elektronik',
             categoryName: 'Elektronik',
             price: 350000,
-            image: 'https://images.tokopedia.net/img/cache/700/VqbcmM/2022/6/13/78c49d1e-e509-4ba3-8848-f0c7210a13a1.jpg',
+            image: 'https://i.pinimg.com/736x/e0/1b/9b/e01b9bb381987343c0215795858d9b76.jpg',
             rating: 4.9,
             reviews: 38,
             date: new Date('2025-04-18')
@@ -92,7 +92,7 @@ function loadProducts(category = 'all', sortBy = 'terbaru') {
             category: 'kebutuhan-sehari-hari',
             categoryName: 'Kebutuhan Sehari-hari',
             price: 15000,
-            image: 'https://image.astronauts.cloud/product-images/2024/7/Sdbs_6e43337f-bd6d-418d-9bae-be0a9d1a9751_900x900.jpg',
+            image: 'https://i.pinimg.com/736x/2e/26/1e/2e261eae7538659ed17b2b62e6791a87.jpg',
             rating: 4.3,
             reviews: 92,
             date: new Date('2025-04-15')
@@ -103,7 +103,7 @@ function loadProducts(category = 'all', sortBy = 'terbaru') {
             category: 'kebutuhan-sehari-hari',
             categoryName: 'Kebutuhan Sehari-hari',
             price: 5000,
-            image: 'https://images.tokopedia.net/img/cache/500-square/VqbcmM/2021/8/4/bd02bab6-229c-4c6c-ad21-6a4b51bfb534.jpg',
+            image: 'https://down-id.img.susercontent.com/file/id-11134207-7r98p-lvbpve69i36n85@resize_w900_nl.webp',
             rating: 4.2,
             reviews: 78,
             date: new Date('2025-04-12')

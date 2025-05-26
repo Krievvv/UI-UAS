@@ -1,0 +1,405 @@
+/* css/pembayaran.css - ORANGE THEME */
+body {
+    background-color: #f8f9fa;
+}
+
+main .container {
+    padding-top: 20px;
+    padding-bottom: 40px;
+}
+
+.breadcrumb-checkout {
+    font-size: 0.9em;
+    color: #6c757d;
+    margin-bottom: 20px; /* Reduced margin */
+}
+.breadcrumb-checkout a {
+    color: #FFA500; /* Orange for links */
+    text-decoration: none;
+}
+.breadcrumb-checkout a:hover {
+    text-decoration: underline;
+}
+.breadcrumb-checkout .fa-chevron-right {
+    font-size: 0.7em;
+    margin: 0 8px;
+    color: #adb5bd;
+}
+.breadcrumb-checkout span {
+    font-weight: 500;
+    color: #495057;
+}
+
+.page-title {
+    font-size: 2.2em;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 25px;
+    text-align: center; /* Center title */
+}
+
+/* Checkout Layout */
+.checkout-layout {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.checkout-form-container {
+    flex: 2; /* Takes more space */
+    min-width: 320px; /* Minimum width for form */
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+}
+
+.order-summary-container {
+    flex: 1;
+    min-width: 300px;
+}
+
+.order-summary-card {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+    position: sticky;
+    top: 20px; /* Sticky summary */
+}
+.order-summary-card h3 {
+    font-size: 1.5em;
+    font-weight: 600;
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+}
+.order-summary-card h3 .fas {
+    margin-right: 10px;
+    color: #FFA500; /* Orange icon */
+}
+
+
+/* Form Styling */
+.checkout-section {
+    margin-bottom: 30px;
+    border: 1px solid #e0e0e0;
+    padding: 20px;
+    border-radius: 6px;
+}
+.checkout-section legend {
+    font-size: 1.1em; /* Slightly smaller legend */
+    font-weight: 500;
+    color: #333;
+    padding: 0 10px;
+    margin-left: 5px;
+}
+.checkout-section legend h3 {
+    margin: 0;
+    font-size: 1.2em; /* Consistent heading size */
+    display: flex;
+    align-items: center;
+}
+.checkout-section legend .fas {
+    margin-right: 8px;
+    color: #FFA500; /* Orange icon in legend */
+}
+
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.form-group {
+    margin-bottom: 18px;
+    flex: 1; /* Allow groups to share space */
+    min-width: calc(50% - 10px); /* For two columns in a row */
+}
+.form-group:only-child { /* If a group is alone in a row */
+    min-width: 100%;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 500;
+    color: #495057;
+    margin-bottom: 6px;
+    font-size: 0.9em;
+}
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-size: 1em;
+    color: #495057;
+    box-sizing: border-box;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group input[type="tel"]:focus,
+.form-group textarea:focus {
+    border-color: #FFA500; /* Orange focus border */
+    box-shadow: 0 0 0 0.2rem rgba(255, 165, 0, 0.25); /* Orange focus shadow */
+    outline: none;
+}
+.form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.error-message {
+    color: #dc3545; /* Red for errors */
+    font-size: 0.85em;
+    display: block; 
+    margin-top: 5px;
+    min-height: 1.2em; /* Reserve space to prevent layout shifts */
+}
+.input-error {
+    border-color: #dc3545 !important; /* Red border for error inputs */
+}
+
+/* Payment Methods */
+.payment-methods-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.payment-method {
+    /* The input itself is hidden, label acts as the clickable area */
+}
+.payment-method input[type="radio"] {
+    display: none; 
+}
+.payment-method label {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s, box-shadow 0.2s;
+    position: relative; /* For custom radio indicator */
+}
+.payment-method label:hover {
+    border-color: #E69500; /* Darker orange border on hover */
+    background-color: #fffaf0; /* Very light orange background on hover */
+}
+.payment-method input[type="radio"]:checked + label {
+    border-color: #FFA500; /* Orange border for active */
+    background-color: #FFF5E5; /* Light orange background for active */
+    box-shadow: 0 2px 8px rgba(255, 165, 0, 0.15);
+}
+.payment-method input[type="radio"]:checked + label .radio-custom-indicator::after {
+    opacity: 1; /* Show checkmark */
+}
+
+.payment-method i {
+    margin-right: 15px;
+    font-size: 1.8em; /* Slightly larger icon */
+    color: #FFA500; /* Orange icon */
+    width: 30px; /* Fixed width for alignment */
+    text-align: center;
+}
+.payment-method .method-name {
+    font-weight: 600; /* Bolder name */
+    color: #333;
+    font-size: 1.05em;
+}
+.payment-method .method-desc {
+    font-size: 0.85em;
+    color: #555;
+    margin-top: 3px;
+}
+.radio-custom-indicator { /* Custom radio button appearance */
+    width: 20px;
+    height: 20px;
+    border: 2px solid #adb5bd;
+    border-radius: 50%;
+    margin-left: auto; /* Push to the right */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.2s;
+}
+.payment-method input[type="radio"]:checked + label .radio-custom-indicator {
+    border-color: #FFA500; /* Orange border for checked custom radio */
+}
+.radio-custom-indicator::after { /* The checkmark */
+    content: '';
+    width: 10px;
+    height: 10px;
+    background-color: #FFA500; /* Orange checkmark */
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+
+/* Order Summary Items */
+#checkout-items-list {
+    margin-bottom: 20px;
+    max-height: 300px; /* Allow scrolling for many items */
+    overflow-y: auto;
+    padding-right: 10px; /* Space for scrollbar */
+}
+.checkout-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+.checkout-item:last-child {
+    border-bottom: none;
+}
+.checkout-item-image img {
+    width: 50px; /* Smaller image */
+    height: 50px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-right: 15px;
+    border: 1px solid #eee;
+}
+.checkout-item-details {
+    flex-grow: 1;
+}
+.checkout-item-title {
+    font-size: 0.95em;
+    font-weight: 500;
+    color: #333;
+    margin: 0 0 3px 0;
+}
+.checkout-item-price {
+    font-size: 0.9em;
+    color: #555;
+}
+.loading-text {
+    font-style: italic;
+    color: #777;
+    text-align: center;
+    padding: 15px 0;
+}
+
+/* Summary Totals */
+.summary-totals .summary-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    font-size: 0.95em;
+}
+.summary-totals .summary-row span:first-child {
+    color: #555;
+}
+.summary-totals .summary-row span:last-child {
+    font-weight: 500;
+    color: #333;
+}
+.summary-totals .summary-divider {
+    border: 0;
+    border-top: 1px dashed #ccc;
+    margin: 10px 0;
+}
+.summary-totals .summary-row.total {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+.summary-totals .summary-row.total span:last-child {
+    color: #FFA500; /* Orange for total */
+}
+
+/* Pay Button */
+.btn-pay {
+    display: flex; /* For spinner alignment */
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 15px;
+    background-color: #FFA500; /* Orange button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.15em;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 20px;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+}
+.btn-pay:disabled {
+    background-color: #ccc; /* Greyed out when disabled */
+    cursor: not-allowed;
+    box-shadow: none;
+}
+.btn-pay:not(:disabled):hover {
+    background-color: #E69500; /* Darker orange on hover */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 165, 0, 0.3);
+}
+.spinner {
+    display: inline-block;
+    width: 1.2em; /* Spinner size */
+    height: 1.2em;
+    border: 3px solid rgba(255,255,255,.3);
+    border-radius: 50%;
+    border-top-color: #fff; /* Spinner active part color */
+    animation: spin 0.8s ease-in-out infinite;
+    margin-left: 8px; /* Space from text */
+}
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.terms-agreement {
+    font-size: 0.8em;
+    color: #6c757d;
+    text-align: center;
+    margin-top: 15px;
+    line-height: 1.5;
+}
+.terms-agreement a {
+    color: #FFA500; /* Orange links */
+    text-decoration: none;
+}
+.terms-agreement a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) { /* Adjust breakpoint for two-column layout */
+    .checkout-layout {
+        flex-direction: column-reverse; /* Summary often goes on top on mobile */
+    }
+    .order-summary-container {
+        position: static;
+        margin-bottom: 30px; /* Space when stacked */
+    }
+}
+@media (max-width: 768px) {
+    .page-title {
+        font-size: 1.8em;
+    }
+    .checkout-form-container, .order-summary-card {
+        padding: 20px;
+    }
+    .form-row {
+        flex-direction: column;
+        gap: 0; /* Remove gap if stacking, rely on form-group margin */
+    }
+    .form-group {
+        min-width: 100%; /* Full width on smaller screens */
+    }
+    .payment-method label {
+        padding: 12px;
+    }
+    .payment-method i {
+        font-size: 1.5em;
+    }
+}

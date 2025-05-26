@@ -5,10 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detail Produk - KrievvvShop</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/produk-detail.css"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Header/Navbar sama seperti file lain -->
     <header class="navbar">
         <div class="container">
             <div class="navbar-content">
@@ -39,7 +38,6 @@
         </div>
     </header>
 
-    <!-- Mobile Menu -->
     <div class="mobile-menu">
         <div class="mobile-search">
             <input type="text" placeholder="Cari produk...">
@@ -53,47 +51,50 @@
         </ul>
     </div>
 
-    <!-- Main Content -->
     <main>
         <div class="container">
-            <div class="back-link">
-                <a href="produk.html"><i class="fas fa-arrow-left"></i> Kembali ke Katalog</a>
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> <i class="fas fa-chevron-right"></i>
+                <a href="produk.html">Produk</a> <i class="fas fa-chevron-right"></i>
+                <span id="breadcrumb-product-name">Nama Produk</span>
             </div>
 
-            <!-- Product Detail Container -->
-            <div class="product-detail" id="product-detail">
-                <!-- Product details will be loaded dynamically via JavaScript -->
+            <div class="product-detail-layout" id="product-detail">
+                <div class="loading-placeholder">Memuat detail produk...</div>
             </div>
 
-            <!-- Product Tabs -->
             <div class="product-tabs">
                 <div class="tabs-header">
                     <button class="tab-btn active" data-tab="description">Deskripsi</button>
                     <button class="tab-btn" data-tab="specification">Spesifikasi</button>
-                    <button class="tab-btn" data-tab="reviews">Ulasan</button>
+                    <button class="tab-btn" data-tab="reviews">Ulasan (<span id="review-count">0</span>)</button>
                 </div>
                 <div class="tabs-content">
-                    <div id="description" class="tab-panel active"></div>
-                    <div id="specification" class="tab-panel"></div>
-                    <div id="reviews" class="tab-panel"></div>
+                    <div id="description" class="tab-panel active">
+                        <p class="loading-placeholder">Memuat deskripsi...</p>
+                    </div>
+                    <div id="specification" class="tab-panel">
+                        <p class="loading-placeholder">Memuat spesifikasi...</p>
+                    </div>
+                    <div id="reviews" class="tab-panel">
+                        <p class="loading-placeholder">Memuat ulasan...</p>
+                    </div>
                 </div>
             </div>
 
-            <!-- Related Products -->
             <div class="related-products">
-                <h2>Produk Terkait</h2>
-                <div class="products-grid" id="related-products">
-                    <!-- Related products will be loaded dynamically -->
+                <h2>Mungkin Anda Juga Suka</h2>
+                <div class="products-grid" id="related-products-grid">
+                    <p class="loading-placeholder">Memuat produk terkait...</p>
                 </div>
             </div>
         </div>
     </main>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-about">
+                 <div class="footer-about">
                     <h3>KrievvvShop</h3>
                     <p>Belanja cepat dan mudah, sesuai dengan gaya hidup mahasiswa.</p>
                     <p class="quote">"Kalau ada yang Cepet, Ngapain Ribet"</p>
@@ -115,10 +116,12 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; <span id="current-year"></span> KrievvvShop. Hak Cipta Dilindungi.</p>
+                <p>&copy; <span id="current-year">2024</span> KrievvvShop. Hak Cipta Dilindungi.</p>
             </div>
         </div>
     </footer>
+    
+    <div id="toast-notification" class="toast"></div>
 
     <script src="js/main.js"></script>
     <script src="js/produk-detail.js"></script>
