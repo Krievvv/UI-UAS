@@ -177,7 +177,7 @@ function loadFeaturedProducts() {
             name: 'Notebook Premium A5',
             category: 'Alat Tulis',
             price: 45000,
-            image: 'https://down-id.img.susercontent.com/file/a905daf36db4379d7973c88090864fbd',
+            image: 'https://i.pinimg.com/736x/ed/9c/42/ed9c42752976d5c7f490714808ac3526.jpg',
             rating: 4.5,
             reviews: 85
         },
@@ -195,7 +195,7 @@ function loadFeaturedProducts() {
             name: 'Buku Panduan Kuliah',
             category: 'Buku',
             price: 75000,
-            image: 'https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full/catalog-image/107/MTA-154926368/gramedia_gramedia_full01.jpg',
+            image: 'https://i.pinimg.com/736x/20/bb/a7/20bba7ccd98273ce8d6fb5e73eea24d3.jpg',
             rating: 4.6,
             reviews: 42
         }

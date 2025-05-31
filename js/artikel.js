@@ -9,6 +9,9 @@ document.addEventListener('DOMContentLoaded', function () {
     initializeSearch();
 });
 
+const ITEMS_PER_PAGE = 6; // Number of articles per page
+let currentPage = 1;
+
 // Load articles
 function loadArticles(category = 'all') {
     const articlesContainer = document.getElementById('articles-container');
@@ -59,7 +62,7 @@ function loadArticles(category = 'all') {
             category: 'kesehatan',
             categoryName: 'Kesehatan',
             date: '3 Mei 2025',
-            image: 'img/article-5.jpg',
+            image: 'https://i.pinimg.com/736x/b8/44/f3/b844f30d2abd25b8d4d06a8c3ce55731.jpg',
             excerpt: 'Tips menjaga kesehatan mental di tengah padatnya aktivitas perkuliahan.'
         },
         {
@@ -68,8 +71,80 @@ function loadArticles(category = 'all') {
             category: 'teknologi',
             categoryName: 'Teknologi',
             date: '1 Mei 2025',
-            image: 'img/article-6.jpg',
+            image: 'https://i.pinimg.com/736x/60/d6/89/60d689b8064ba23914e8c4f474925476.jpg',
             excerpt: 'Daftar aplikasi yang membantu meningkatkan produktivitas mahasiswa.'
+        },
+        {
+            id: 7,
+            title: 'Tips Manajemen Waktu Kuliah',
+            category: 'tips-kuliah',
+            categoryName: 'Tips Kuliah',
+            date: '29 April 2025',
+            image: 'https://i.pinimg.com/736x/2a/63/7b/2a637b986c1c1c4706cc6a5796d4f47f.jpg',
+            excerpt: 'Cara efektif mengatur waktu antara kuliah, organisasi, dan kehidupan pribadi.'
+        },
+        {
+            id: 8,
+            title: 'Smartphone Budget untuk Mahasiswa',
+            category: 'teknologi',
+            categoryName: 'Teknologi',
+            date: '27 April 2025',
+            image: 'https://i.pinimg.com/736x/45/66/2c/45662c8c6ef48dfb55c8d3930db333d3.jpg',
+            excerpt: 'Rekomendasi smartphone terbaik dengan harga terjangkau untuk mahasiswa.'
+        },
+        {
+            id: 9,
+            title: 'Olahraga Praktis di Kos',
+            category: 'kesehatan',
+            categoryName: 'Kesehatan',
+            date: '25 April 2025',
+            image: 'https://i.pinimg.com/736x/d9/7c/89/d97c89c8d1b40c4b5fcd244f65126a2a.jpg',
+            excerpt: 'Rutinitas olahraga sederhana yang bisa dilakukan di kamar kos.'
+        },
+        {
+            id: 10,
+            title: 'Wisata Kuliner Murah Surabaya',
+            category: 'gaya-hidup',
+            categoryName: 'Gaya Hidup',
+            date: '23 April 2025',
+            image: 'https://i.pinimg.com/736x/8c/83/9b/8c839b07745c96b9c2c9d947d2c068f8.jpg',
+            excerpt: 'Tempat makan enak dan murah untuk mahasiswa di Surabaya.'
+        },
+        {
+            id: 11,
+            title: 'Software Gratis untuk Mahasiswa',
+            category: 'teknologi',
+            categoryName: 'Teknologi',
+            date: '21 April 2025',
+            image: 'https://i.pinimg.com/736x/34/55/c5/3455c53c8867ce4ca5af66381c1866dd.jpg',
+            excerpt: 'Kumpulan software dan aplikasi gratis yang berguna untuk mahasiswa.'
+        },
+        {
+            id: 12,
+            title: 'Nutrisi Sehat untuk Produktivitas',
+            category: 'kesehatan',
+            categoryName: 'Kesehatan',
+            date: '19 April 2025',
+            image: 'https://i.pinimg.com/736x/91/c7/4c/91c74c4383a5a66f359dd4ef9f87b480.jpg',
+            excerpt: 'Panduan pola makan sehat untuk meningkatkan fokus dan produktivitas.'
+        },
+        {
+            id: 13,
+            title: 'Tips Presentasi yang Efektif',
+            category: 'tips-kuliah',
+            categoryName: 'Tips Kuliah',
+            date: '17 April 2025',
+            image: 'https://i.pinimg.com/736x/aa/5f/ed/aa5fed7fac61cc8f41a1e2f1f320516b.jpg',
+            excerpt: 'Cara membuat dan menyampaikan presentasi yang menarik dan efektif.'
+        },
+        {
+            id: 14,
+            title: 'Hobi Kreatif untuk Mahasiswa',
+            category: 'gaya-hidup',
+            categoryName: 'Gaya Hidup',
+            date: '15 April 2025',
+            image: 'https://i.pinimg.com/736x/bb/c7/b9/bbc7b9b75d523f4c8a95859f48441917.jpg',
+            excerpt: 'Ide hobi kreatif yang bisa menghasilkan uang tambahan.'
         }
     ];
 
@@ -78,13 +153,19 @@ function loadArticles(category = 'all') {
         ? articles
         : articles.filter(article => article.category === category);
 
+    // Calculate pagination
+    const totalPages = Math.ceil(filteredArticles.length / ITEMS_PER_PAGE);
+    const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+    const endIndex = startIndex + ITEMS_PER_PAGE;
+    const paginatedArticles = filteredArticles.slice(startIndex, endIndex);
+
     // Generate HTML for articles
     let articlesHTML = '';
 
-    if (filteredArticles.length === 0) {
+    if (paginatedArticles.length === 0) {
         articlesHTML = '<div class="no-results">Tidak ada artikel yang ditemukan.</div>';
     } else {
-        filteredArticles.forEach(article => {
+        paginatedArticles.forEach(article => {
             articlesHTML += `
                 <div class="article-card">
                     <a href="artikel-detail.html?id=${article.id}">
@@ -103,6 +184,56 @@ function loadArticles(category = 'all') {
     }
 
     articlesContainer.innerHTML = articlesHTML;
+    updatePagination(totalPages);
+}
+
+// Add new function to update pagination buttons
+function updatePagination(totalPages) {
+    const pagination = document.querySelector('.pagination');
+    const prevButton = pagination.querySelector('.pagination-btn:first-child');
+    const nextButton = pagination.querySelector('.pagination-btn:last-child');
+    
+    // Update prev/next buttons state
+    prevButton.classList.toggle('disabled', currentPage === 1);
+    nextButton.classList.toggle('disabled', currentPage === totalPages);
+
+    // Generate page number buttons
+    let paginationHTML = `
+        <button class="pagination-btn ${currentPage === 1 ? 'disabled' : ''}" onclick="changePage('prev')">Sebelumnya</button>
+    `;
+
+    for (let i = 1; i <= totalPages; i++) {
+        paginationHTML += `
+            <button class="pagination-btn ${currentPage === i ? 'active' : ''}" 
+                    onclick="changePage(${i})">${i}</button>
+        `;
+    }
+
+    paginationHTML += `
+        <button class="pagination-btn ${currentPage === totalPages ? 'disabled' : ''}" 
+                onclick="changePage('next')">Selanjutnya</button>
+    `;
+
+    pagination.innerHTML = paginationHTML;
+}
+
+// Add new function to handle page changes
+function changePage(page) {
+    if (page === 'prev' && currentPage > 1) {
+        currentPage--;
+    } else if (page === 'next') {
+        currentPage++;
+    } else if (typeof page === 'number') {
+        currentPage = page;
+    }
+
+    // Scroll to top of the page smoothly
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+
+    loadArticles(getActiveCategory());
 }
 
 // Initialize filter buttons
@@ -111,16 +242,10 @@ function initializeFilters() {
 
     filterButtons.forEach(button => {
         button.addEventListener('click', function () {
-            // Remove active class from all buttons
             filterButtons.forEach(btn => btn.classList.remove('active'));
-
-            // Add active class to clicked button
             this.classList.add('active');
-
-            // Get category from data attribute
+            currentPage = 1; // Reset to first page when changing category
             const category = this.getAttribute('data-category');
-
-            // Load articles with selected category
             loadArticles(category);
         });
     });
@@ -132,10 +257,10 @@ function initializeSearch() {
 
     if (searchInput) {
         searchInput.addEventListener('input', function () {
+            currentPage = 1; // Reset to first page when searching
             const searchTerm = this.value.toLowerCase().trim();
 
             if (searchTerm.length < 2) {
-                // If search term is too short, show all articles
                 loadArticles(getActiveCategory());
                 return;
             }

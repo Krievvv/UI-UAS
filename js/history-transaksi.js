@@ -63,7 +63,7 @@ function loadTransactions() {
                     ${transaction.items.map(item => `
                         <div class="transaction-item">
                             <div class="transaction-item-image">
-                                <img src="img/product-1.jpg" alt="${item.name}">
+                                <img src="https://jete.id/wp-content/uploads/2023/06/jete-13-pro-13.jpg" alt="${item.name}">
                             </div>
                             <div class="transaction-item-details">
                                 <h4 class="transaction-item-title">${item.name}</h4>

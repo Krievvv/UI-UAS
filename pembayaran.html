@@ -5,7 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pembayaran - KrievvvShop</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/pembayaran.css"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/pembayaran.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Tambahkan style untuk menyembunyikan gambar QR default dan mengaturnya */
+        .qris-image-container {
+            margin-top: 10px;
+            text-align: center; /* Agar gambar QR di tengah */
+        }
+        .qris-image-container img {
+            max-width: 200px; /* Sesuaikan ukuran gambar QR */
+            display: none; /* Sembunyikan secara default */
+            border: 1px solid #ddd;
+            padding: 5px;
+            border-radius: 4px;
+        }
+    </style>
 </head>
 <body>
     <header class="navbar">
@@ -143,6 +158,9 @@
                                         </div>
                                         <span class="radio-custom-indicator"></span>
                                     </label>
+                                    <div class="qris-image-container">
+                                        <img id="qris-image" src="image/QR.png" alt="QRIS Code">
+                                        </div>
                                 </div>
                             </div>
                             <span class="error-message" id="payment_method-error"></span>

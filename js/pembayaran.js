@@ -84,19 +84,45 @@ function loadCheckoutData() {
 
 function initializePaymentMethodSelection() {
     const paymentMethods = document.querySelectorAll('.payment-method');
+    const qrisImage = document.getElementById('qris-image'); // Dapatkan elemen gambar QRIS
+
     paymentMethods.forEach(method => {
         const radio = method.querySelector('input[type="radio"]');
+        
         method.addEventListener('click', () => {
-            if (radio) radio.checked = true; // Ensure radio is checked
-            paymentMethods.forEach(m => m.classList.remove('active'));
-            method.classList.add('active');
+            if (radio) {
+                radio.checked = true; // Ensure radio is checked
+                // Trigger change event manually to update UI if needed by other listeners
+                radio.dispatchEvent(new Event('change', { bubbles: true })); 
+            }
         });
-        // Initial active state based on checked radio
+
+        if (radio) {
+            radio.addEventListener('change', () => { // Dengarkan event 'change' pada radio button
+                paymentMethods.forEach(m => m.classList.remove('active'));
+                method.classList.add('active');
+
+                // Logika untuk menampilkan/menyembunyikan gambar QRIS
+                if (radio.value === 'qris' && radio.checked) {
+                    if (qrisImage) qrisImage.style.display = 'block';
+                } else {
+                    if (qrisImage) qrisImage.style.display = 'none';
+                }
+            });
+        }
+
+        // Initial active state and QRIS visibility based on checked radio
         if (radio && radio.checked) {
             method.classList.add('active');
+            if (radio.value === 'qris') {
+                if (qrisImage) qrisImage.style.display = 'block';
+            } else {
+                if (qrisImage) qrisImage.style.display = 'none';
+            }
         }
     });
 }
+
 
 function initializeFormValidationAndPayButton() {
     const form = document.getElementById('checkout-main-form');
@@ -162,7 +188,8 @@ function initializeFormValidationAndPayButton() {
         let isFormValid = true;
         inputsToValidate.forEach(field => {
             const inputElement = document.getElementById(field.id);
-            if (inputElement.required || inputElement.value.trim() !== '') { // Validate required fields or non-empty optional fields
+            // Hanya validasi field yang required atau yang tidak kosong jika opsional
+            if (inputElement.required || inputElement.value.trim() !== '') { 
                  if (!validateField(inputElement, field.errorId, field.validation, field.message)) {
                     isFormValid = false;
                 }

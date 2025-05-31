@@ -222,9 +222,8 @@ function initActionButtons(product) {
     if (addToCartBtn) {
         addToCartBtn.addEventListener('click', () => {
             const quantity = parseInt(document.getElementById('quantity').value);
-            // Assuming addToCart function is in main.js or globally available
             if (typeof addToCart === "function") {
-                addToCart(product, quantity); // addToCart should handle localStorage and feedback
+                addToCart(product, quantity);
                 showToast(`${product.name} (x${quantity}) ditambahkan ke keranjang!`);
             } else {
                 console.error("Fungsi addToCart tidak ditemukan.");
@@ -236,12 +235,31 @@ function initActionButtons(product) {
     if (buyNowBtn) {
         buyNowBtn.addEventListener('click', () => {
             const quantity = parseInt(document.getElementById('quantity').value);
-            if (typeof addToCart === "function") {
-                addToCart(product, quantity, true); // Add a flag for 'buy now' to clear other items or handle differently if needed
-            } else {
-                 console.error("Fungsi addToCart tidak ditemukan.");
-            }
-            // Redirect to checkout, assuming checkout page will use items from cart
+            
+            // Clear existing checkout items
+            localStorage.removeItem('checkout_items');
+            
+            // Create direct checkout item
+            const checkoutItem = {
+                id: product.id,
+                name: product.name,
+                price: product.price,
+                image: (product.images && product.images.length > 0) ? product.images[0] : product.image,
+                quantity: quantity
+            };
+
+            // Calculate totals
+            const subtotal = product.price * quantity;
+            const shipping = 10000; // Biaya pengiriman tetap, sesuaikan jika perlu
+            const total = subtotal + shipping;
+
+            // Set checkout data
+            localStorage.setItem('checkout_items', JSON.stringify([checkoutItem]));
+            localStorage.setItem('checkout_subtotal', subtotal.toString());
+            localStorage.setItem('checkout_shipping', shipping.toString());
+            localStorage.setItem('checkout_total', total.toString());
+
+            // Redirect to checkout page
             window.location.href = 'pembayaran.html';
         });
     }
