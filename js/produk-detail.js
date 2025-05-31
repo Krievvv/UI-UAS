@@ -57,8 +57,8 @@ document.addEventListener('DOMContentLoaded', function() {
             image: 'https://i.pinimg.com/736x/ed/9c/42/ed9c42752976d5c7f490714808ac3526.jpg',
             images: [
                 'https://i.pinimg.com/736x/ed/9c/42/ed9c42752976d5c7f490714808ac3526.jpg',
-                'https://id-test-11.slatic.net/p/157c90795924e503429910f246f6c923.jpg',
-                'https://images.tokopedia.net/img/cache/700/VqbcmM/2021/8/18/249f7e96-4f75-4f84-870b-34f33b46545b.jpg'
+                'https://i.pinimg.com/736x/35/3f/da/353fda55ed71173bb1a4377d1091aba3.jpg',
+                'https://i.pinimg.com/736x/0d/9e/da/0d9eda159b5b7716671c4e0799a32240.jpg'
             ],
             shortDescription: 'Notebook A5 dengan sampul hardcover elegan dan kertas tebal berkualitas tinggi (100gsm).',
             fullDescription: 'Abadikan ide-ide brilian Anda dengan Notebook Premium A5 kami. Dirancang dengan sampul hardcover yang kokoh dan elegan, notebook ini tidak hanya tahan lama tetapi juga nyaman digenggam. Kertas berkualitas tinggi 100gsm berwarna krem lembut di mata dan ideal untuk berbagai jenis alat tulis, mulai dari pulpen hingga spidol tipis, tanpa khawatir tembus (ghosting/bleeding). Dilengkapi dengan pita pembatas dan kantong di bagian dalam sampul belakang untuk menyimpan catatan kecil atau kartu nama.',
