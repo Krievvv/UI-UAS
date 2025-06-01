@@ -67,7 +67,7 @@ function initCarousel() {
     const slideCount = slides.length;
 
     // Automatically change slides every 5 seconds
-    let autoplayInterval = setInterval(nextSlide, 5000);
+    let autoplayInterval = setInterval(nextSlide, 2500);
 
     // Add event listeners to buttons
     prevButton.addEventListener('click', () => {
@@ -119,7 +119,7 @@ function initCarousel() {
     // Reset autoplay timer
     function resetAutoplay() {
         clearInterval(autoplayInterval);
-        autoplayInterval = setInterval(nextSlide, 5000);
+        autoplayInterval = setInterval(nextSlide, 2500);
     }
 
     // Add swipe support for mobile

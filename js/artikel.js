@@ -80,7 +80,7 @@ function loadArticles(category = 'all') {
             category: 'tips-kuliah',
             categoryName: 'Tips Kuliah',
             date: '29 April 2025',
-            image: 'https://i.pinimg.com/736x/2a/63/7b/2a637b986c1c1c4706cc6a5796d4f47f.jpg',
+            image: 'https://i.pinimg.com/736x/16/64/d1/1664d1ffe14e265aae698430801ab768.jpg',
             excerpt: 'Cara efektif mengatur waktu antara kuliah, organisasi, dan kehidupan pribadi.'
         },
         {
@@ -89,7 +89,7 @@ function loadArticles(category = 'all') {
             category: 'teknologi',
             categoryName: 'Teknologi',
             date: '27 April 2025',
-            image: 'https://i.pinimg.com/736x/45/66/2c/45662c8c6ef48dfb55c8d3930db333d3.jpg',
+            image: 'https://i.pinimg.com/736x/ca/f9/90/caf9901cb64381fba49ed13f9b8ccb14.jpg',
             excerpt: 'Rekomendasi smartphone terbaik dengan harga terjangkau untuk mahasiswa.'
         },
         {
@@ -98,7 +98,7 @@ function loadArticles(category = 'all') {
             category: 'kesehatan',
             categoryName: 'Kesehatan',
             date: '25 April 2025',
-            image: 'https://i.pinimg.com/736x/d9/7c/89/d97c89c8d1b40c4b5fcd244f65126a2a.jpg',
+            image: 'https://i.pinimg.com/736x/1f/b5/bf/1fb5bf6b9575d8f772b91512ed64fef8.jpg',
             excerpt: 'Rutinitas olahraga sederhana yang bisa dilakukan di kamar kos.'
         },
         {
@@ -107,7 +107,7 @@ function loadArticles(category = 'all') {
             category: 'gaya-hidup',
             categoryName: 'Gaya Hidup',
             date: '23 April 2025',
-            image: 'https://i.pinimg.com/736x/8c/83/9b/8c839b07745c96b9c2c9d947d2c068f8.jpg',
+            image: 'https://i.pinimg.com/736x/78/8c/69/788c694e92dfe12a7fcb419ee472afd2.jpg',
             excerpt: 'Tempat makan enak dan murah untuk mahasiswa di Surabaya.'
         },
         {
@@ -116,7 +116,7 @@ function loadArticles(category = 'all') {
             category: 'teknologi',
             categoryName: 'Teknologi',
             date: '21 April 2025',
-            image: 'https://i.pinimg.com/736x/34/55/c5/3455c53c8867ce4ca5af66381c1866dd.jpg',
+            image: 'https://i.pinimg.com/736x/57/46/8d/57468d8387042651790a73ade6a0d224.jpg',
             excerpt: 'Kumpulan software dan aplikasi gratis yang berguna untuk mahasiswa.'
         },
         {
@@ -125,7 +125,7 @@ function loadArticles(category = 'all') {
             category: 'kesehatan',
             categoryName: 'Kesehatan',
             date: '19 April 2025',
-            image: 'https://i.pinimg.com/736x/91/c7/4c/91c74c4383a5a66f359dd4ef9f87b480.jpg',
+            image: 'https://i.pinimg.com/736x/2e/9a/3d/2e9a3deaaac76111e1126c112631f18f.jpg',
             excerpt: 'Panduan pola makan sehat untuk meningkatkan fokus dan produktivitas.'
         },
         {
@@ -134,7 +134,7 @@ function loadArticles(category = 'all') {
             category: 'tips-kuliah',
             categoryName: 'Tips Kuliah',
             date: '17 April 2025',
-            image: 'https://i.pinimg.com/736x/aa/5f/ed/aa5fed7fac61cc8f41a1e2f1f320516b.jpg',
+            image: 'https://i.pinimg.com/736x/39/43/63/394363c859dab4dd0391003687424142.jpg',
             excerpt: 'Cara membuat dan menyampaikan presentasi yang menarik dan efektif.'
         },
         {
@@ -143,7 +143,7 @@ function loadArticles(category = 'all') {
             category: 'gaya-hidup',
             categoryName: 'Gaya Hidup',
             date: '15 April 2025',
-            image: 'https://i.pinimg.com/736x/bb/c7/b9/bbc7b9b75d523f4c8a95859f48441917.jpg',
+            image: 'https://i.pinimg.com/736x/68/56/aa/6856aa19dbf51a196711b033a5b8e79e.jpg',
             excerpt: 'Ide hobi kreatif yang bisa menghasilkan uang tambahan.'
         }
     ];

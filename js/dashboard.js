@@ -7,6 +7,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Initialize category chart
     initializeCategoryChart();
+
+    // Initialize low stock button functionality
+    initializeAddStockButtons();
 });
 
 // Initialize revenue chart
@@ -90,5 +93,30 @@ function initializeCategoryChart() {
                 }
             }
         }
+    });
+}
+
+// Function to initialize "Tambah Stok" button functionality
+function initializeAddStockButtons() {
+    const addStockButtons = document.querySelectorAll('.product-item .product-stock .btn-outline');
+
+    addStockButtons.forEach(button => {
+        button.addEventListener('click', function(event) {
+            const productItem = event.target.closest('.product-item');
+            if (productItem) {
+                const stockCountElement = productItem.querySelector('.stock-count.low');
+                if (stockCountElement) {
+                    let currentStockText = stockCountElement.textContent; 
+                    // Extract the number part
+                    let currentStockNumber = parseInt(currentStockText.split(':')[1].trim());
+                    
+                    if (!isNaN(currentStockNumber)) {
+                        currentStockNumber++; 
+                        stockCountElement.textContent = `Stok: ${currentStockNumber}`; 
+                        
+                    }
+                }
+            }
+        });
     });
 }
