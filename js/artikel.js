@@ -7,6 +7,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Initialize search
     initializeSearch();
+
+    // Initialize mobile menu
+    initializeMobileMenu();
 });
 
 const ITEMS_PER_PAGE = 6; // Number of articles per page
@@ -167,15 +170,20 @@ function loadArticles(category = 'all') {
     } else {
         paginatedArticles.forEach(article => {
             articlesHTML += `
-                <div class="article-card">
+                <div class="blog-card">
                     <a href="artikel-detail.html?id=${article.id}">
-                        <div class="article-image">
+                        <div class="blog-image">
                             <img src="${article.image}" alt="${article.title}">
+                            <span class="blog-category">${article.categoryName}</span>
                         </div>
-                        <div class="article-info">
-                            <div class="article-date">${article.date} • ${article.categoryName}</div>
-                            <h3 class="article-title">${article.title}</h3>
-                            <p class="article-excerpt">${article.excerpt}</p>
+                        <div class="blog-content">
+                            <div class="blog-date">
+                                <i class="far fa-calendar-alt"></i>
+                                ${article.date}
+                            </div>
+                            <h3 class="blog-title">${article.title}</h3>
+                            <p class="blog-excerpt">${article.excerpt}</p>
+                            <span class="blog-read-more">Baca selengkapnya <i class="fas fa-arrow-right"></i></span>
                         </div>
                     </a>
                 </div>
@@ -187,21 +195,16 @@ function loadArticles(category = 'all') {
     updatePagination(totalPages);
 }
 
-// Add new function to update pagination buttons
+// Update pagination buttons
 function updatePagination(totalPages) {
     const pagination = document.querySelector('.pagination');
-    const prevButton = pagination.querySelector('.pagination-btn:first-child');
-    const nextButton = pagination.querySelector('.pagination-btn:last-child');
     
     // Update prev/next buttons state
-    prevButton.classList.toggle('disabled', currentPage === 1);
-    nextButton.classList.toggle('disabled', currentPage === totalPages);
-
-    // Generate page number buttons
     let paginationHTML = `
         <button class="pagination-btn ${currentPage === 1 ? 'disabled' : ''}" onclick="changePage('prev')">Sebelumnya</button>
     `;
 
+    // Generate page number buttons
     for (let i = 1; i <= totalPages; i++) {
         paginationHTML += `
             <button class="pagination-btn ${currentPage === i ? 'active' : ''}" 
@@ -217,7 +220,7 @@ function updatePagination(totalPages) {
     pagination.innerHTML = paginationHTML;
 }
 
-// Add new function to handle page changes
+// Handle page changes
 function changePage(page) {
     if (page === 'prev' && currentPage > 1) {
         currentPage--;
@@ -266,11 +269,11 @@ function initializeSearch() {
             }
 
             // Get all article cards
-            const articleCards = document.querySelectorAll('.article-card');
+            const articleCards = document.querySelectorAll('.blog-card');
 
             articleCards.forEach(card => {
-                const title = card.querySelector('.article-title').textContent.toLowerCase();
-                const excerpt = card.querySelector('.article-excerpt').textContent.toLowerCase();
+                const title = card.querySelector('.blog-title').textContent.toLowerCase();
+                const excerpt = card.querySelector('.blog-excerpt').textContent.toLowerCase();
 
                 // Show/hide based on search term
                 if (title.includes(searchTerm) || excerpt.includes(searchTerm)) {
@@ -281,7 +284,7 @@ function initializeSearch() {
             });
 
             // Show message if no results
-            const visibleCards = document.querySelectorAll('.article-card[style="display: none;"]');
+            const visibleCards = document.querySelectorAll('.blog-card[style="display: none;"]');
             const noResults = document.querySelector('.no-results');
 
             if (visibleCards.length === articleCards.length) {
@@ -303,3 +306,18 @@ function getActiveCategory() {
     const activeButton = document.querySelector('.filter-btn.active');
     return activeButton ? activeButton.getAttribute('data-category') : 'all';
 }
+
+// Initialize mobile menu
+function initializeMobileMenu() {
+    const menuToggle = document.querySelector('.mobile-menu-toggle');
+    const mobileMenu = document.querySelector('.mobile-menu');
+
+    if (menuToggle && mobileMenu) {
+        menuToggle.addEventListener('click', function() {
+            mobileMenu.classList.toggle('active');
+        });
+    }
+}
+
+// Make functions available globally
+window.changePage = changePage;

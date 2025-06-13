@@ -4,16 +4,10 @@ document.addEventListener('DOMContentLoaded', function () {
     initializeGlobalEventListeners(); // Untuk event delegation
 });
 
-// Asumsi fungsi-fungsi ini ada di main.js atau di sini
-// Jika belum ada, Anda perlu mengimplementasikannya
 function getCartItems() {
     // Contoh implementasi:
     const items = localStorage.getItem('cart');
     return items ? JSON.parse(items) : [];
-    // return [ // Contoh data untuk testing
-    //     { id: 1, name: 'Headphone Bluetooth Mahasiswa Edition', price: 299000, quantity: 1, image: 'https://via.placeholder.com/100' },
-    //     { id: 2, name: 'Mouse Gaming Keren', price: 150000, quantity: 2, image: 'https://via.placeholder.com/100' }
-    // ];
 }
 
 function updateCartItemQuantity(productId, quantity) {
@@ -167,17 +161,10 @@ function initializeGlobalEventListeners() {
     const checkoutButton = document.getElementById('checkout-button');
     if (checkoutButton) {
         checkoutButton.addEventListener('click', function() {
-            // Logika checkout Anda sudah benar, pastikan checkLoginStatus() ada jika diperlukan
-            // if (!checkLoginStatus()) {
-            //     alert('Silakan login terlebih dahulu untuk melanjutkan pembayaran.');
-            //     // window.location.href = 'login.html'; // Arahkan ke login
-            //     return;
-            // }
-
             const cartItems = getCartItems();
             if (cartItems.length > 0) {
                 const subtotal = calculateSubtotal(cartItems);
-                const shipping = cartItems.length > 0 ? 15000 : 0; // Sama seperti di updateCartSummary
+                const shipping = cartItems.length > 0 ? 15000 : 0;
                 const total = subtotal + shipping;
 
                 localStorage.setItem('checkout_items', JSON.stringify(cartItems));
@@ -224,7 +211,7 @@ function updateCartSummary() {
         clearCartBtn.style.display = cartItems.length > 0 ? 'block' : 'none';
     }
 
-    updateCartCount(); // Untuk sinkronisasi dengan counter di navbar
+    updateCartCount();
 }
 
 function calculateSubtotal(cartItems) {
@@ -236,10 +223,3 @@ const currentYearSpan = document.getElementById('current-year');
 if (currentYearSpan) {
     currentYearSpan.textContent = new Date().getFullYear();
 }
-
-// (Opsional) Fungsi checkLoginStatus jika Anda memerlukannya sebelum checkout
-// function checkLoginStatus() {
-//     // Implementasi pengecekan status login, misalnya dari localStorage atau session
-//     // return localStorage.getItem('isLoggedIn') === 'true'; 
-//     return true; // Placeholder, asumsikan selalu login untuk contoh ini
-// }

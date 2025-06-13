@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arsip Artikel - KrievvvShop</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/artikel.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -53,13 +54,19 @@
         </ul>
     </div>
 
-    <!-- Main Content -->
-    <main>
+    <!-- Blog Header -->
+    <div class="blog-header">
         <div class="container">
-            <h1 class="page-title">Arsip Artikel</h1>
+            <h1>Artikel KrievvvShop</h1>
+            <p>Temukan tips, inspirasi, dan informasi terbaru untuk mahasiswa</p>
+        </div>
+    </div>
 
+    <!-- Main Content -->
+    <main class="blog-main">
+        <div class="container">
             <!-- Search and Filter -->
-            <div class="search-filter">
+            <div class="blog-toolbar">
                 <div class="search-container">
                     <input type="text" id="artikel-search" placeholder="Cari artikel...">
                     <button type="submit"><i class="fas fa-search"></i></button>
@@ -70,13 +77,16 @@
                     <button class="filter-btn" data-category="gaya-hidup">Gaya Hidup</button>
                     <button class="filter-btn" data-category="teknologi">Teknologi</button>
                     <button class="filter-btn" data-category="kesehatan">Kesehatan</button>
-                    <button class="filter-btn filter-icon"><i class="fas fa-filter"></i></button>
                 </div>
             </div>
 
             <!-- Articles Grid -->
-            <div class="articles-grid" id="articles-container">
+            <div class="blog-grid" id="articles-container">
                 <!-- Articles will be loaded dynamically via JavaScript -->
+                <div class="blog-loading">
+                    <div class="spinner"></div>
+                    <p>Memuat artikel...</p>
+                </div>
             </div>
 
             <!-- Pagination -->

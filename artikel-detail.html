@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detail Artikel - KrievvvShop</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/artikel.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -54,20 +55,64 @@
     </div>
 
     <!-- Main Content -->
-    <main>
+    <main class="blog-detail-main">
         <div class="container">
-            <div class="back-link">
-                <a href="artikel.html"><i class="fas fa-arrow-left"></i> Kembali ke Arsip Artikel</a>
+            <div class="breadcrumb">
+                <a href="index.html">Beranda</a>
+                <span class="separator">/</span>
+                <a href="artikel.html">Artikel</a>
+                <span class="separator">/</span>
+                <span class="current-page" id="breadcrumb-title">Judul Artikel</span>
             </div>
 
-            <article class="article-detail" id="article-content">
-                <!-- Article content will be loaded dynamically via JavaScript -->
-            </article>
+            <div class="blog-detail-container">
+                <article class="blog-detail" id="article-content">
+                    <!-- Article content will be loaded dynamically via JavaScript -->
+                    <div class="blog-loading">
+                        <div class="spinner"></div>
+                        <p>Memuat artikel...</p>
+                    </div>
+                </article>
+
+                <aside class="blog-sidebar">
+                    <div class="sidebar-widget author-widget">
+                        <h3>Tentang Penulis</h3>
+                        <div class="author-info">
+                            <img src="https://i.pravatar.cc/150?img=11" alt="Admin" class="author-avatar">
+                            <div class="author-details">
+                                <h4>Admin</h4>
+                                <p>Penulis konten di KrievvvShop yang berbagi tips dan informasi untuk mahasiswa.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-widget">
+                        <h3>Bagikan Artikel</h3>
+                        <div class="share-buttons">
+                            <a href="#" class="share-btn facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="share-btn twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="share-btn whatsapp"><i class="fab fa-whatsapp"></i></a>
+                            <a href="#" class="share-btn telegram"><i class="fab fa-telegram-plane"></i></a>
+                            <a href="#" class="share-btn copy" id="copy-link"><i class="fas fa-link"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-widget">
+                        <h3>Kategori</h3>
+                        <ul class="category-list">
+                            <li><a href="artikel.html?category=tips-kuliah">Tips Kuliah</a></li>
+                            <li><a href="artikel.html?category=gaya-hidup">Gaya Hidup</a></li>
+                            <li><a href="artikel.html?category=teknologi">Teknologi</a></li>
+                            <li><a href="artikel.html?category=kesehatan">Kesehatan</a></li>
+                        </ul>
+                    </div>
+                </aside>
+            </div>
 
             <!-- Related Articles -->
             <div class="related-articles">
-                <h3>Artikel Terkait</h3>
-                <div class="articles-grid" id="related-articles">
+                <h2>Artikel Terkait</h2>
+                <div class="blog-grid" id="related-articles">
                     <!-- Related articles will be loaded dynamically via JavaScript -->
                 </div>
             </div>
