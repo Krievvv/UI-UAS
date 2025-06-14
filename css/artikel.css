@@ -501,6 +501,12 @@
     background-color: var(--primary-color);
 }
 
+.share-buttons {
+    display: flex;
+    gap: 0.5rem; 
+    flex-wrap: wrap;
+}
+
 .author-info {
     display: flex;
     align-items: center;

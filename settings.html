@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengaturan - KrievvvShop</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/settings.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Header/Navbar -->
+    <header class="navbar">
+        <div class="container">
+            <div class="navbar-content">
+                <div class="logo">
+                    <a href="index.html">KrievvvShop</a>
+                </div>
+                <div class="search-bar">
+                    <input type="text" placeholder="Cari produk...">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </div>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="artikel.html">Artikel</a></li>
+                        <li><a href="produk.html">Produk</a></li>
+                        <li>
+                            <a href="keranjang.html" class="cart-icon">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span class="cart-count">0</span>
+                            </a>
+                        </li>
+                        <li>
+                            <div class="user-dropdown">
+                                <button class="dropdown-toggle">
+                                    <i class="fas fa-user"></i>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <!-- <a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a> -->
+                                    <a href="settings.html" class="active"><i class="fas fa-cog"></i> Pengaturan</a>
+                                    <a href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Keluar</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <div class="mobile-search">
+            <input type="text" placeholder="Cari produk...">
+            <button type="submit"><i class="fas fa-search"></i></button>
+        </div>
+        <ul>
+            <li><a href="artikel.html">Artikel</a></li>
+            <li><a href="produk.html">Produk</a></li>
+            <li><a href="keranjang.html">Keranjang</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="settings.html" class="active">Pengaturan</a></li>
+            <li><a href="#" id="mobile-logout-btn">Keluar</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <div class="settings-container">
+                <div class="settings-sidebar">
+                    <div class="user-profile">
+                        <div class="user-avatar">
+                            <img src="https://ui-avatars.com/api/?name=User&background=f97316&color=fff" alt="User" id="profile-avatar">
+                            <div class="avatar-overlay">
+                                <label for="avatar-upload" class="avatar-change">
+                                    <i class="fas fa-camera"></i>
+                                </label>
+                                <input type="file" id="avatar-upload" accept="image/*" hidden>
+                            </div>
+                        </div>
+                        <h3 id="profile-name">User Name</h3>
+                        <p id="profile-email">user@example.com</p>
+                    </div>
+                    <nav class="settings-nav">
+                        <ul>
+                            <li class="active" data-tab="account">
+                                <a href="#account">
+                                    <i class="fas fa-user"></i>
+                                    <span>Akun</span>
+                                </a>
+                            </li>
+                            <li data-tab="security">
+                                <a href="#security">
+                                    <i class="fas fa-lock"></i>
+                                    <span>Keamanan</span>
+                                </a>
+                            </li>
+                            <li data-tab="notifications">
+                                <a href="#notifications">
+                                    <i class="fas fa-bell"></i>
+                                    <span>Notifikasi</span>
+                                </a>
+                            </li>
+                            <li data-tab="privacy">
+                                <a href="#privacy">
+                                    <i class="fas fa-shield-alt"></i>
+                                    <span>Privasi</span>
+                                </a>
+                            </li>
+                            <li data-tab="appearance">
+                                <a href="#appearance">
+                                    <i class="fas fa-paint-brush"></i>
+                                    <span>Tampilan</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="settings-content">
+                    <div class="settings-tab active" id="account-tab">
+                        <div class="settings-header">
+                            <h2>Pengaturan Akun</h2>
+                            <p>Kelola informasi akun dan preferensi Anda</p>
+                        </div>
+                        <div class="settings-form">
+                            <form id="account-form">
+                                <div class="form-group">
+                                    <label for="fullname">Nama Lengkap</label>
+                                    <input type="text" id="fullname" name="fullname" value="User Name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" id="email" name="email" value="user@example.com">
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Nomor Telepon</label>
+                                    <input type="tel" id="phone" name="phone" placeholder="Masukkan nomor telepon">
+                                </div>
+                                <div class="form-group">
+                                    <label for="birthdate">Tanggal Lahir</label>
+                                    <input type="date" id="birthdate" name="birthdate">
+                                </div>
+                                <div class="form-group">
+                                    <label for="gender">Jenis Kelamin</label>
+                                    <select id="gender" name="gender">
+                                        <option value="">Pilih jenis kelamin</option>
+                                        <option value="male">Laki-laki</option>
+                                        <option value="female">Perempuan</option>
+                                        <option value="other">Lainnya</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="bio">Bio</label>
+                                    <textarea id="bio" name="bio" rows="4" placeholder="Ceritakan sedikit tentang diri Anda"></textarea>
+                                </div>
+                                <div class="form-actions">
+                                    <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+                                    <button type="reset" class="btn btn-outline">Reset</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="settings-tab" id="security-tab">
+                        <div class="settings-header">
+                            <h2>Keamanan</h2>
+                            <p>Kelola password dan keamanan akun Anda</p>
+                        </div>
+                        <div class="settings-form">
+                            <form id="security-form">
+                                <div class="form-group">
+                                    <label for="current-password">Password Saat Ini</label>
+                                    <div class="password-input">
+                                        <input type="password" id="current-password" name="current-password">
+                                        <button type="button" class="toggle-password">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="new-password">Password Baru</label>
+                                    <div class="password-input">
+                                        <input type="password" id="new-password" name="new-password">
+                                        <button type="button" class="toggle-password">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="confirm-password">Konfirmasi Password Baru</label>
+                                    <div class="password-input">
+                                        <input type="password" id="confirm-password" name="confirm-password">
+                                        <button type="button" class="toggle-password">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="form-actions">
+                                    <button type="submit" class="btn btn-primary">Ubah Password</button>
+                                </div>
+                            </form>
+                            <div class="security-section">
+                                <h3>Verifikasi Dua Faktor</h3>
+                                <p>Tambahkan lapisan keamanan ekstra untuk akun Anda</p>
+                                <div class="toggle-switch">
+                                    <input type="checkbox" id="two-factor" class="toggle-input">
+                                    <label for="two-factor" class="toggle-label"></label>
+                                    <span class="toggle-status">Nonaktif</span>
+                                </div>
+                            </div>
+                            <div class="security-section">
+                                <h3>Sesi Aktif</h3>
+                                <p>Perangkat yang saat ini login ke akun Anda</p>
+                                <div class="session-list">
+                                    <div class="session-item">
+                                        <div class="session-info">
+                                            <i class="fas fa-laptop"></i>
+                                            <div>
+                                                <h4>Chrome di Windows</h4>
+                                                <p>Surabaya, Indonesia • Aktif sekarang</p>
+                                            </div>
+                                        </div>
+                                        <span class="session-current">Perangkat ini</span>
+                                    </div>
+                                    <div class="session-item">
+                                        <div class="session-info">
+                                            <i class="fas fa-mobile-alt"></i>
+                                            <div>
+                                                <h4>App di Android</h4>
+                                                <p>Surabaya, Indonesia • 2 jam yang lalu</p>
+                                            </div>
+                                        </div>
+                                        <button class="btn btn-sm btn-outline">Keluar</button>
+                                    </div>
+                                </div>
+                                <button class="btn btn-outline btn-danger">Keluar dari Semua Perangkat</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="settings-tab" id="notifications-tab">
+                        <div class="settings-header">
+                            <h2>Notifikasi</h2>
+                            <p>Kelola preferensi notifikasi Anda</p>
+                        </div>
+                        <div class="settings-form">
+                            <div class="notification-section">
+                                <h3>Email</h3>
+                                <div class="notification-option">
+                                    <div>
+                                        <h4>Promosi dan Diskon</h4>
+                                        <p>Dapatkan info tentang promo dan diskon terbaru</p>
+                                    </div>
+                                    <div class="toggle-switch">
+                                        <input type="checkbox" id="promo-email" class="toggle-input" checked>
+                                        <label for="promo-email" class="toggle-label"></label>
+                                    </div>
+                                </div>
+                                <div class="notification-option">
+                                    <div>
+                                        <h4>Update Pesanan</h4>
+                                        <p>Dapatkan info tentang status pesanan Anda</p>
+                                    </div>
+                                    <div class="toggle-switch">
+                                        <input type="checkbox" id="order-email" class="toggle-input" checked>
+                                        <label for="order-email" class="toggle-label"></label>
+                                    </div>
+                                </div>
+                                <div class="notification-option">
+                                    <div>
+                                        <h4>Newsletter</h4>
+                                        <p>Dapatkan artikel dan tips terbaru</p>
+                                    </div>
+                                    <div class="toggle-switch">
+                                        <input type="checkbox" id="newsletter-email" class="toggle-input">
+                                        <label for="newsletter-email" class="toggle-label"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="notification-section">
+                                <h3>Push Notification</h3>
+                                <div class="notification-option">
+                                    <div>
+                                        <h4>Promosi dan Diskon</h4>
+                                        <p>Dapatkan notifikasi tentang promo dan diskon terbaru</p>
+                                    </div>
+                                    <div class="toggle-switch">
+                                        <input type="checkbox" id="promo-push" class="toggle-input" checked>
+                                        <label for="promo-push" class="toggle-label"></label>
+                                    </div>
+                                </div>
+                                <div class="notification-option">
+                                    <div>
+                                        <h4>Update Pesanan</h4>
+                                        <p>Dapatkan notifikasi tentang status pesanan Anda</p>
+                                    </div>
+                                    <div class="toggle-switch">
+                                        <input type="checkbox" id="order-push" class="toggle-input" checked>
+                                        <label for="order-push" class="toggle-label"></label>
+                                    </div>
+                                </div>
+                                <div class="notification-option">
+                                    <div>
+                                        <h4>Stok Produk</h4>
+                                        <p>Dapatkan notifikasi saat produk wishlist Anda tersedia</p>
+                                    </div>
+                                    <div class="toggle-switch">
+                                        <input type="checkbox" id="stock-push" class="toggle-input" checked>
+                                        <label for="stock-push" class="toggle-label"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">Simpan Preferensi</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="settings-tab" id="privacy-tab">
+                        <div class="settings-header">
+                            <h2>Privasi</h2>
+                            <p>Kelola pengaturan privasi akun Anda</p>
+                        </div>
+                        <div class="settings-form">
+                            <div class="privacy-section">
+                                <h3>Visibilitas Profil</h3>
+                                <div class="form-group">
+                                    <label for="profile-visibility">Siapa yang dapat melihat profil Anda?</label>
+                                    <select id="profile-visibility" name="profile-visibility">
+                                        <option value="public">Semua orang</option>
+                                        <option value="registered">Pengguna terdaftar</option>
+                                        <option value="private">Hanya saya</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="privacy-section">
+                                <h3>Data dan Personalisasi</h3>
+                                <div class="notification-option">
+                                    <div>
+                                        <h4>Personalisasi Produk</h4>
+                                        <p>Izinkan kami menyesuaikan rekomendasi produk berdasarkan aktivitas Anda</p>
+                                    </div>
+                                    <div class="toggle-switch">
+                                        <input type="checkbox" id="personalization" class="toggle-input" checked>
+                                        <label for="personalization" class="toggle-label"></label>
+                                    </div>
+                                </div>
+                                <div class="notification-option">
+                                    <div>
+                                        <h4>Analitik Penggunaan</h4>
+                                        <p>Izinkan kami mengumpulkan data penggunaan untuk meningkatkan layanan</p>
+                                    </div>
+                                    <div class="toggle-switch">
+                                        <input type="checkbox" id="analytics" class="toggle-input" checked>
+                                        <label for="analytics" class="toggle-label"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="privacy-section">
+                                <h3>Hapus Akun</h3>
+                                <p>Menghapus akun akan menghapus semua data Anda secara permanen</p>
+                                <button class="btn btn-outline btn-danger">Hapus Akun</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="settings-tab" id="appearance-tab">
+                        <div class="settings-header">
+                            <h2>Tampilan</h2>
+                            <p>Sesuaikan tampilan aplikasi</p>
+                        </div>
+                        <div class="settings-form">
+                            <div class="appearance-section">
+                                <h3>Tema</h3>
+                                <div class="theme-options">
+                                    <div class="theme-option active">
+                                        <div class="theme-preview light-theme"></div>
+                                        <span>Terang</span>
+                                    </div>
+                                    <div class="theme-option">
+                                        <div class="theme-preview dark-theme"></div>
+                                        <span>Gelap</span>
+                                    </div>
+                                    <div class="theme-option">
+                                        <div class="theme-preview system-theme"></div>
+                                        <span>Sistem</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="appearance-section">
+                                <h3>Ukuran Font</h3>
+                                <div class="font-size-slider">
+                                    <span>A</span>
+                                    <input type="range" min="1" max="5" value="3" class="slider" id="font-size-slider">
+                                    <span>A</span>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">Simpan Preferensi</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>KrievvvShop</h3>
+                    <p>Belanja cepat dan mudah, sesuai dengan gaya hidup mahasiswa.</p>
+                    <p class="quote">"Kalau ada yang Cepet, Ngapain Ribet"</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>Tautan</h3>
+                    <ul>
+                        <li><a href="index.html">Beranda</a></li>
+                        <li><a href="artikel.html">Artikel</a></li>
+                        <li><a href="produk.html">Produk</a></li>
+                        <li><a href="keranjang.html">Keranjang</a></li>
+                        <li><a href="tentang-kami.html">Tentang Kami</a></li>
+                        <li><a href="kontak.html">Kontak</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Kategori</h3>
+                    <ul>
+                        <li><a href="produk.html?category=elektronik">Elektronik</a></li>
+                        <li><a href="produk.html?category=alat-tulis">Alat Tulis</a></li>
+                        <li><a href="produk.html?category=buku">Buku</a></li>
+                        <li><a href="produk.html?category=fashion">Fashion</a></li>
+                        <li><a href="produk.html?category=makanan">Makanan</a></li>
+                        <li><a href="produk.html?category=kesehatan">Kesehatan</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Kontak</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Krievv, Surabaya Timur</p>
+                    <p><i class="fas fa-envelope"></i> krievvvshop@gmail.com</p>
+                    <p><i class="fas fa-phone"></i> +62 812 3456 7890</p>
+                    <div class="newsletter">
+                        <h4>Berlangganan Newsletter</h4>
+                        <form class="newsletter-form">
+                            <input type="email" placeholder="Email Anda" required>
+                            <button type="submit" class="btn btn-primary">Langganan</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year"></span> KrievvvShop. Hak Cipta Dilindungi.</p>
+                <div class="footer-bottom-links">
+                    <a href="kebijakan-privasi.html">Kebijakan Privasi</a>
+                    <a href="syarat-ketentuan.html">Syarat & Ketentuan</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container"></div>
+
+    <script src="js/main.js"></script>
+    <script src="js/settings.js"></script>
+</body>
+
+</html>
